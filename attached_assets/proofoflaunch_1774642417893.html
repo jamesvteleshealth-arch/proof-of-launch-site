@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proof of Launch — Idea to Proven Launch</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:#05080F; --bg2:#090E1A; --bg3:#0E1525; --bg4:#131C30;
+  --teal:#00D4AA; --teal-dim:#009E80; --amber:#FFB800; --violet:#8B5CF6;
+  --red:#FF4D4D; --blue:#3B82F6; --white:#EFF6FF;
+  --muted:#3D5470; --muted2:#6B88A0;
+  --border:#0F1E30; --border2:#182840;
+  --fd:'Barlow Condensed',sans-serif; --fb:'DM Sans',sans-serif; --fm:'DM Mono',monospace;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--white);font-family:var(--fb);font-size:16px;line-height:1.6;overflow-x:hidden;}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");opacity:.6;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(0,212,170,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,170,.02) 1px,transparent 1px);
+  background-size:64px 64px;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:68px;background:rgba(5,8,15,.88);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-hex{width:30px;height:30px;background:var(--teal);clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:11px;font-weight:900;color:var(--bg);}
+.logo-text{font-family:var(--fd);font-size:17px;font-weight:700;letter-spacing:.06em;color:var(--white);}
+.logo-text em{color:var(--teal);font-style:normal;}
+.nav-links{display:flex;align-items:center;gap:2rem;list-style:none;}
+.nav-links a{font-family:var(--fm);font-size:11px;letter-spacing:.1em;color:var(--muted2);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--teal);}
+.nav-pill{background:var(--teal);color:var(--bg)!important;padding:8px 18px;font-weight:600!important;clip-path:polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);transition:background .2s!important;}
+.nav-pill:hover{background:#00F4C4!important;}
+
+/* HERO */
+#hero{position:relative;z-index:1;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:120px 4rem 60px;overflow:hidden;}
+.hero-glow-teal{position:absolute;top:-15%;right:-10%;width:60vw;height:60vw;max-width:800px;max-height:800px;background:radial-gradient(circle,rgba(0,212,170,.07) 0%,transparent 65%);pointer-events:none;}
+.hero-glow-violet{position:absolute;bottom:-10%;left:-5%;width:40vw;height:40vw;max-width:600px;max-height:600px;background:radial-gradient(circle,rgba(139,92,246,.05) 0%,transparent 65%);pointer-events:none;}
+.hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1fr 420px;gap:4rem;align-items:center;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(0,212,170,.4);padding:5px 14px;margin-bottom:1.75rem;font-family:var(--fm);font-size:11px;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;}
+.hero-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;animation:blink 2s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-h1{font-family:var(--fd);font-size:clamp(60px,8.5vw,116px);font-weight:900;line-height:.9;letter-spacing:-.01em;margin-bottom:1.5rem;}
+.hero-h1 .w1{display:block;color:var(--white);}
+.hero-h1 .w2{display:block;color:var(--teal);}
+.hero-h1 .w3{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(239,246,255,.25);}
+.hero-sub{font-size:17px;color:var(--muted2);max-width:520px;line-height:1.75;margin-bottom:2.5rem;}
+.hero-sub strong{color:var(--white);font-weight:600;}
+.hero-btns{display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap;}
+.btn-teal{display:inline-flex;align-items:center;gap:8px;background:var(--teal);color:var(--bg);padding:15px 30px;font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-decoration:none;clip-path:polygon(9px 0%,100% 0%,calc(100% - 9px) 100%,0% 100%);border:none;cursor:pointer;transition:all .2s;}
+.btn-teal:hover{background:#00F4C4;transform:translateY(-2px);}
+.btn-ghost{font-family:var(--fm);font-size:12px;letter-spacing:.08em;color:var(--muted2);text-decoration:none;text-transform:uppercase;border-bottom:1px solid var(--border2);padding-bottom:2px;transition:color .2s,border-color .2s;}
+.btn-ghost:hover{color:var(--white);border-color:var(--muted2);}
+
+/* Journey card */
+.hero-journey{background:var(--bg2);border:1px solid var(--border2);overflow:hidden;}
+.journey-header{background:var(--bg3);border-bottom:1px solid var(--border2);padding:16px 20px;font-family:var(--fm);font-size:10px;letter-spacing:.12em;color:var(--muted2);text-transform:uppercase;}
+.journey-step{padding:20px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;gap:14px;transition:background .2s;}
+.journey-step:hover{background:var(--bg3);}
+.journey-step:last-child{border-bottom:none;}
+.js-num{font-family:var(--fd);font-size:32px;font-weight:900;color:var(--border2);line-height:1;width:32px;flex-shrink:0;text-align:center;transition:color .2s;}
+.journey-step:hover .js-num{color:var(--js-color,var(--teal));opacity:.6;}
+.js-title{font-family:var(--fd);font-size:18px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.js-desc{font-size:12px;color:var(--muted2);line-height:1.5;}
+.js-tag{display:inline-block;margin-top:6px;font-family:var(--fm);font-size:9px;letter-spacing:.08em;color:var(--js-color,var(--teal));border:1px solid currentColor;padding:2px 7px;text-transform:uppercase;opacity:.8;}
+
+/* MARQUEE */
+.marquee-bar{position:relative;z-index:1;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:12px 0;overflow:hidden;}
+.marquee-track{display:flex;width:max-content;animation:scroll 30s linear infinite;}
+@keyframes scroll{to{transform:translateX(-50%);}}
+.mitem{display:flex;align-items:center;gap:10px;padding:0 36px;font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;white-space:nowrap;}
+.mitem .mdot{width:4px;height:4px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+
+/* SECTIONS */
+section{position:relative;z-index:1;padding:96px 4rem;}
+.slabel{font-family:var(--fm);font-size:10px;letter-spacing:.18em;color:var(--teal);text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+.slabel::before{content:'';width:20px;height:1px;background:var(--teal);}
+.stitle{font-family:var(--fd);font-size:clamp(38px,4.5vw,60px);font-weight:800;line-height:1;letter-spacing:-.01em;margin-bottom:1.1rem;}
+.ssub{font-size:16px;color:var(--muted2);max-width:540px;line-height:1.75;margin-bottom:3.5rem;}
+
+/* PILLARS */
+#pillars{background:var(--bg);}
+.pillars-split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);}
+.pillar{background:var(--bg2);padding:52px 44px;position:relative;overflow:hidden;}
+.pillar::after{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--p-color,var(--teal));}
+.pillar-icon{font-size:44px;margin-bottom:16px;display:block;}
+.pillar-label{font-family:var(--fm);font-size:10px;letter-spacing:.14em;color:var(--p-color,var(--teal));text-transform:uppercase;margin-bottom:8px;}
+.pillar-name{font-family:var(--fd);font-size:48px;font-weight:900;color:var(--white);line-height:1;margin-bottom:12px;}
+.pillar-tagline{font-size:16px;color:var(--muted2);line-height:1.7;margin-bottom:28px;max-width:400px;}
+.pillar-features{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:32px;}
+.pillar-features li{font-size:13px;color:var(--muted2);display:flex;align-items:center;gap:10px;}
+.pillar-features li::before{content:'→';color:var(--p-color,var(--teal));font-weight:700;flex-shrink:0;}
+.pillar-cta{display:inline-flex;align-items:center;gap:8px;font-family:var(--fd);font-size:14px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--p-color,var(--teal));text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:2px;transition:opacity .2s;}
+.pillar-cta:hover{opacity:.7;}
+.pillar-bg-text{position:absolute;bottom:-20px;right:-10px;font-family:var(--fd);font-size:130px;font-weight:900;color:rgba(255,255,255,.02);line-height:1;pointer-events:none;letter-spacing:-.02em;}
+
+/* BUILD PHASES */
+#build{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.phases-row{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);margin-bottom:1px;}
+.phase-card{background:var(--bg3);padding:36px 30px;position:relative;overflow:hidden;transition:background .3s;}
+.phase-card:hover{background:var(--bg4);}
+.phase-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ph-color,var(--teal));transform:scaleX(0);transform-origin:left;transition:transform .4s ease;}
+.phase-card:hover::before{transform:scaleX(1);}
+.ph-num{font-family:var(--fd);font-size:80px;font-weight:900;color:var(--border2);line-height:1;margin-bottom:8px;transition:color .3s;}
+.phase-card:hover .ph-num{color:var(--ph-color,var(--teal));opacity:.2;}
+.ph-icon{font-size:28px;margin-bottom:10px;display:block;}
+.ph-name{font-family:var(--fd);font-size:24px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.ph-desc{font-size:13px;color:var(--muted2);line-height:1.6;}
+.ph-includes{margin-top:18px;padding-top:16px;border-top:1px solid var(--border);font-family:var(--fm);font-size:10px;letter-spacing:.08em;color:var(--ph-color,var(--teal));text-transform:uppercase;}
+
+/* BUILD TIERS */
+.build-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.bt-card{background:var(--bg3);padding:32px 28px 36px;position:relative;display:flex;flex-direction:column;transition:background .3s;}
+.bt-card:hover{background:var(--bg4);}
+.bt-card.featured{background:var(--bg4);outline:1px solid var(--teal);outline-offset:-1px;}
+.bt-badge{position:absolute;top:0;right:0;background:var(--teal);color:var(--bg);font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:5px 12px;}
+.bt-tier{font-family:var(--fm);font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.bt-name{font-family:var(--fd);font-size:30px;font-weight:800;color:var(--white);line-height:1;margin-bottom:4px;}
+.bt-sub{font-size:13px;color:var(--muted2);margin-bottom:24px;}
+.bt-price{font-family:var(--fd);font-size:54px;font-weight:900;color:var(--white);line-height:1;margin-bottom:4px;}
+.bt-price sup{font-size:22px;vertical-align:super;line-height:0;}
+.bt-price-note{font-family:var(--fm);font-size:10px;color:var(--muted);letter-spacing:.06em;margin-bottom:24px;}
+.bt-div{height:1px;background:var(--border);margin-bottom:20px;}
+.bt-features{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;}
+.bt-features li{font-size:13px;color:var(--muted2);display:flex;align-items:flex-start;gap:9px;line-height:1.4;}
+.bt-features li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+.bt-incl{margin-top:20px;padding-top:16px;border-top:1px solid var(--border);font-size:12px;color:var(--muted2);display:flex;align-items:center;gap:6px;}
+.bt-incl strong{color:var(--teal);}
+.bt-timeline{font-family:var(--fm);font-size:10px;letter-spacing:.08em;color:var(--amber);margin-top:8px;}
+.tools-strip{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:2.5rem;}
+.tool-badge{background:var(--bg3);border:1px solid var(--border2);padding:8px 16px;font-family:var(--fm);font-size:11px;letter-spacing:.06em;color:var(--muted2);text-transform:uppercase;transition:border-color .2s,color .2s;}
+.tool-badge:hover{border-color:var(--teal);color:var(--teal);}
+.tools-label{font-family:var(--fm);font-size:10px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase;margin-right:4px;}
+
+/* PROVE */
+#prove{background:var(--bg);}
+.prove-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
+.pc{background:var(--bg2);padding:28px 24px 36px;position:relative;display:flex;flex-direction:column;transition:background .3s;}
+.pc:hover{background:var(--bg3);}
+.pc.featured{background:var(--bg3);outline:1px solid var(--teal);outline-offset:-1px;}
+.pc-badge{position:absolute;top:0;right:0;background:var(--teal);color:var(--bg);font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;}
+.pc-tier{font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
+.pc-name{font-family:var(--fd);font-size:24px;font-weight:800;color:var(--white);line-height:1;margin-bottom:3px;}
+.pc-for{font-size:12px;color:var(--muted2);margin-bottom:20px;}
+.pc-price{font-family:var(--fd);font-size:40px;font-weight:900;color:var(--white);line-height:1;margin-bottom:3px;}
+.pc-price sup{font-size:18px;vertical-align:super;line-height:0;}
+.pc-note{font-family:var(--fm);font-size:9px;color:var(--muted);letter-spacing:.06em;margin-bottom:20px;}
+.pc-div{height:1px;background:var(--border);margin-bottom:16px;}
+.pc-list{list-style:none;display:flex;flex-direction:column;gap:7px;flex:1;}
+.pc-list li{font-size:12px;color:var(--muted2);display:flex;align-items:flex-start;gap:8px;line-height:1.4;}
+.pc-list li::before{content:'✓';color:var(--teal);font-weight:700;flex-shrink:0;}
+.pc-time{font-family:var(--fm);font-size:9px;color:var(--amber);letter-spacing:.08em;margin-top:16px;padding-top:12px;border-top:1px solid var(--border);}
+.prove-addons{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border:1px solid var(--border);border-top:none;}
+.addon{background:var(--bg2);padding:22px 28px;display:flex;align-items:center;gap:18px;transition:background .3s;}
+.addon:hover{background:var(--bg3);}
+.addon-ico{font-size:26px;}
+.addon-name{font-family:var(--fd);font-size:20px;font-weight:700;color:var(--white);margin-bottom:2px;}
+.addon-desc{font-size:12px;color:var(--muted2);}
+.addon-p{margin-left:auto;text-align:right;flex-shrink:0;}
+.addon-pnum{font-family:var(--fd);font-size:26px;font-weight:800;color:var(--white);}
+.addon-pnote{font-family:var(--fm);font-size:9px;color:var(--muted);}
+.full-cycle{border:1px solid var(--border);border-top:none;background:linear-gradient(120deg,var(--bg2) 0%,rgba(139,92,246,.07) 100%);padding:28px 36px;display:flex;align-items:center;justify-content:space-between;gap:2rem;}
+.fc-left{display:flex;align-items:center;gap:18px;}
+.fc-ico{width:56px;height:56px;flex-shrink:0;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.3);display:flex;align-items:center;justify-content:center;font-size:26px;}
+.fc-name{font-family:var(--fd);font-size:26px;font-weight:800;color:var(--white);margin-bottom:2px;}
+.fc-desc{font-size:13px;color:var(--muted2);max-width:460px;}
+.fc-p{text-align:right;flex-shrink:0;}
+.fc-pnum{font-family:var(--fd);font-size:20px;font-weight:800;color:var(--violet);}
+.fc-pnote{font-family:var(--fm);font-size:10px;color:var(--muted);}
+
+/* DEVICES */
+#devices{background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.devices-layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.device-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.dcard{background:var(--bg3);border:1px solid var(--border2);padding:18px;position:relative;transition:border-color .3s,transform .3s;}
+.dcard:hover{border-color:var(--teal);transform:translateY(-3px);}
+.dcard.crit{border-left:3px solid var(--red);}
+.dcard.hi{border-left:3px solid var(--amber);}
+.dcard.med{border-left:3px solid var(--muted);}
+.dcard-ico{font-size:22px;margin-bottom:6px;}
+.dcard-name{font-size:12px;font-weight:600;color:var(--white);margin-bottom:1px;}
+.dcard-os{font-family:var(--fm);font-size:9px;color:var(--muted);}
+.dbadge{position:absolute;top:10px;right:10px;font-family:var(--fm);font-size:8px;letter-spacing:.07em;padding:2px 5px;text-transform:uppercase;}
+.dbadge.crit{color:var(--red);border:1px solid var(--red);}
+.dbadge.hi{color:var(--amber);border:1px solid var(--amber);}
+.dbadge.med{color:var(--muted);border:1px solid var(--muted);}
+.field-list{display:flex;flex-direction:column;}
+.fitem{display:flex;align-items:flex-start;gap:14px;padding:18px 0;border-bottom:1px solid var(--border);}
+.fitem:last-child{border-bottom:none;}
+.fitem-ico{width:34px;height:34px;flex-shrink:0;background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.15);display:flex;align-items:center;justify-content:center;font-size:15px;}
+.fitem-title{font-size:13px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.fitem-desc{font-size:12px;color:var(--muted2);}
+
+/* CONTACT */
+#contact{background:var(--bg);}
+.contact-layout{display:grid;grid-template-columns:1fr 1.15fr;gap:6rem;align-items:start;}
+.contact-h{font-family:var(--fd);font-size:54px;font-weight:900;line-height:1;margin-bottom:1.25rem;}
+.contact-p{font-size:15px;color:var(--muted2);line-height:1.75;margin-bottom:2rem;}
+.cfacts{display:flex;flex-direction:column;gap:14px;}
+.cfact{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--muted2);}
+.cfact-ico{width:30px;height:30px;flex-shrink:0;background:rgba(0,212,170,.07);border:1px solid rgba(0,212,170,.15);display:flex;align-items:center;justify-content:center;font-size:13px;}
+.cfact strong{color:var(--white);}
+.cform{background:var(--bg2);border:1px solid var(--border2);padding:36px;}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{margin-bottom:16px;}
+.fg label{display:block;font-family:var(--fm);font-size:9px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin-bottom:6px;}
+.fg input,.fg select,.fg textarea{width:100%;background:var(--bg);border:1px solid var(--border2);color:var(--white);font-family:var(--fb);font-size:13px;padding:11px 14px;outline:none;transition:border-color .2s;appearance:none;border-radius:0;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--teal);}
+.fg textarea{resize:vertical;min-height:90px;}
+.fg select option{background:var(--bg);}
+.fsub{width:100%;background:var(--teal);color:var(--bg);border:none;padding:15px 28px;font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;clip-path:polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);transition:background .2s,transform .2s;}
+.fsub:hover{background:#00F4C4;transform:translateY(-1px);}
+.fnote{font-size:11px;color:var(--muted);margin-top:10px;text-align:center;line-height:1.5;}
+
+/* FOOTER */
+footer{position:relative;z-index:1;background:var(--bg);border-top:1px solid var(--border);padding:36px 4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.flogo{font-family:var(--fd);font-size:15px;font-weight:700;letter-spacing:.06em;color:var(--muted2);}
+.flogo em{color:var(--teal);font-style:normal;}
+.flinks{display:flex;gap:2rem;list-style:none;flex-wrap:wrap;}
+.flinks a{font-family:var(--fm);font-size:10px;letter-spacing:.09em;color:var(--muted);text-decoration:none;text-transform:uppercase;transition:color .2s;}
+.flinks a:hover{color:var(--teal);}
+.fcopy{font-family:var(--fm);font-size:10px;color:var(--muted);letter-spacing:.04em;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.reveal.on{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav{padding:0 2rem;} .nav-links{display:none;}
+  section{padding:72px 2rem;} #hero{padding:110px 2rem 60px;}
+  .hero-inner{grid-template-columns:1fr;} .hero-journey{display:none;}
+  .pillars-split,.phases-row,.build-tiers{grid-template-columns:1fr;}
+  .prove-grid{grid-template-columns:1fr!important;}
+  .prove-addons{grid-template-columns:1fr;}
+  .full-cycle{flex-direction:column;align-items:flex-start;}
+  .devices-layout{grid-template-columns:1fr;}
+  .contact-layout{grid-template-columns:1fr;}
+  footer{padding:36px 2rem;}
+  .fc-left{flex-direction:column;align-items:flex-start;}
+}
+@media(max-width:640px){
+  .frow{grid-template-columns:1fr;} .device-grid{grid-template-columns:1fr 1fr;}
+  .hero-h1{font-size:56px;} .hero-btns{flex-direction:column;align-items:flex-start;}
+  .addon{flex-wrap:wrap;} .addon-p{margin-left:0;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="logo-hex">POL</div>
+    <span class="logo-text">PROOF<em>OF</em>LAUNCH</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#pillars">Services</a></li>
+    <li><a href="#build">Build</a></li>
+    <li><a href="#prove">QA &amp; Launch</a></li>
+    <li><a href="#devices">Device Lab</a></li>
+    <li><a href="#contact" class="nav-pill">Start a Project</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-glow-teal"></div>
+  <div class="hero-glow-violet"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span class="hero-dot"></span>Vibe Coding + DevOps Engineering · QA · Deploy · Prove</div>
+      <h1 class="hero-h1">
+        <span class="w1">IDEA TO</span>
+        <span class="w2">PROVEN</span>
+        <span class="w3">LAUNCH.</span>
+      </h1>
+      <p class="hero-sub">Proof of Launch builds across the full stack — <strong>vibe coding and AI tools for speed</strong>, <strong>DevOps engineers from scratch</strong> where it matters. Then we prove it's production-ready with real QA, real infrastructure, and real device testing. Business development consulting included from day one.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-teal">Start With a Free Discovery Call →</a>
+        <a href="#pillars" class="btn-ghost">See How It Works ↓</a>
+      </div>
+    </div>
+    <div class="hero-journey reveal">
+      <div class="journey-header">// Your journey with us</div>
+      <div class="journey-step" style="--js-color:var(--amber)">
+        <div class="js-num">01</div>
+        <div>
+          <div class="js-title">Discovery &amp; BD</div>
+          <div class="js-desc">We validate your idea, define the MVP, and map a build plan. Business development consulting with James — included free.</div>
+          <span class="js-tag" style="--js-color:var(--amber)">Free · Included</span>
+        </div>
+      </div>
+      <div class="journey-step" style="--js-color:var(--violet)">
+        <div class="js-num">02</div>
+        <div>
+          <div class="js-title">Build</div>
+          <div class="js-desc">Our team builds your app using Replit, Lovable, Cursor, Bolt, or v0 — the right tool for the right problem.</div>
+          <span class="js-tag" style="--js-color:var(--violet)">2–12 Weeks</span>
+        </div>
+      </div>
+      <div class="journey-step" style="--js-color:var(--teal)">
+        <div class="js-num">03</div>
+        <div>
+          <div class="js-title">Prove &amp; Deploy</div>
+          <div class="js-desc">Full QA suite, real device testing, cloud infrastructure setup. Your app ships production-ready.</div>
+          <span class="js-tag" style="--js-color:var(--teal)">Bundled In</span>
+        </div>
+      </div>
+      <div class="journey-step" style="--js-color:#10B981">
+        <div class="js-num">04</div>
+        <div>
+          <div class="js-title">Live</div>
+          <div class="js-desc">Your app is in users' hands. Proven, deployed, and documented. Ongoing QA retainer available.</div>
+          <span class="js-tag" style="--js-color:#10B981">You Ship With Confidence</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="mitem"><span class="mdot"></span>Vibe Coding + DevOps Engineering</span>
+    <span class="mitem"><span class="mdot"></span>Business Development</span>
+    <span class="mitem"><span class="mdot"></span>Replit · Lovable · Cursor · Bolt · v0</span>
+    <span class="mitem"><span class="mdot"></span>Functional QA</span>
+    <span class="mitem"><span class="mdot"></span>Real Device Testing</span>
+    <span class="mitem"><span class="mdot"></span>AWS · GCP · Azure · DigitalOcean</span>
+    <span class="mitem"><span class="mdot"></span>App Store Compliance</span>
+    <span class="mitem"><span class="mdot"></span>HIPAA · Fintech</span>
+    <span class="mitem"><span class="mdot"></span>DevOps From Scratch</span>
+    <span class="mitem"><span class="mdot"></span>Chicago HQ · Manila Team</span>
+    <span class="mitem"><span class="mdot"></span>Vibe Coding + DevOps Engineering</span>
+    <span class="mitem"><span class="mdot"></span>Business Development</span>
+    <span class="mitem"><span class="mdot"></span>Replit · Lovable · Cursor · Bolt · v0</span>
+    <span class="mitem"><span class="mdot"></span>Functional QA</span>
+    <span class="mitem"><span class="mdot"></span>Real Device Testing</span>
+    <span class="mitem"><span class="mdot"></span>AWS · GCP · Azure · DigitalOcean</span>
+    <span class="mitem"><span class="mdot"></span>App Store Compliance</span>
+    <span class="mitem"><span class="mdot"></span>HIPAA · Fintech</span>
+    <span class="mitem"><span class="mdot"></span>DevOps From Scratch</span>
+    <span class="mitem"><span class="mdot"></span>Chicago HQ · Manila Team</span>
+  </div>
+</div>
+
+<section id="pillars">
+  <div class="slabel">What We Do</div>
+  <h2 class="stitle reveal">Two Services.<br>One Studio.</h2>
+  <p class="ssub reveal">You can come to us with a raw idea, or an app that's already built. Either way, you leave with something proven.</p>
+  <div class="pillars-split">
+    <div class="pillar" style="--p-color:var(--violet)">
+      <div class="pillar-bg-text">BUILD</div>
+      <span class="pillar-icon">🏗️</span>
+      <div class="pillar-label">Pillar One</div>
+      <div class="pillar-name">Build</div>
+      <div class="pillar-tagline">You have an idea. We validate it, scope it, and build it — using vibe coding and AI tools for speed, and DevOps engineers from scratch where reliability matters. QA and deployment bundled in.</div>
+      <ul class="pillar-features">
+        <li>Free discovery &amp; BD consulting with James</li>
+        <li>MVP scoping and market validation</li>
+        <li>Vibe coding for speed — Replit, Lovable, Cursor, Bolt, v0</li>
+        <li>DevOps engineers for infrastructure, from scratch</li>
+        <li>QA and cloud deploy included in every build tier</li>
+        <li>Phased billing — Discovery → Build → Launch</li>
+      </ul>
+      <a href="#build" class="pillar-cta">See Build Tiers →</a>
+    </div>
+    <div class="pillar" style="--p-color:var(--teal)">
+      <div class="pillar-bg-text">PROVE</div>
+      <span class="pillar-icon">🔬</span>
+      <div class="pillar-label">Pillar Two</div>
+      <div class="pillar-name">Prove</div>
+      <div class="pillar-tagline">You already have an app. We test it, harden it, deploy it to real infrastructure, and certify it's ready for real users — on real devices.</div>
+      <ul class="pillar-features">
+        <li>Functional QA — 30 to 80+ test cases</li>
+        <li>Physical device testing (iOS &amp; Android)</li>
+        <li>Cloud migration off Replit to AWS, GCP, Azure</li>
+        <li>App store compliance and HIPAA/Fintech audit</li>
+        <li>Flat-rate pricing from $399</li>
+      </ul>
+      <a href="#prove" class="pillar-cta">See QA Tiers →</a>
+    </div>
+  </div>
+</section>
+
+<section id="build">
+  <div class="slabel">Build Service</div>
+  <h2 class="stitle reveal">From Idea to App<br>in Three Phases.</h2>
+  <p class="ssub reveal">Every build starts with a free discovery session — no code, no cost, just a sharp conversation about what you're building and whether it has legs.</p>
+  <div class="phases-row">
+    <div class="phase-card reveal" style="--ph-color:var(--amber)">
+      <div class="ph-num">01</div>
+      <span class="ph-icon">💡</span>
+      <div class="ph-name">Discovery &amp; Business Development</div>
+      <div class="ph-desc">James leads a structured discovery session to validate your idea, identify the market opportunity, define your MVP scope, choose the right tech stack, and produce a build estimate. This is where most studios charge $2,000+. We include it free — because a bad build scope wastes everyone's time.</div>
+      <div class="ph-includes">✓ Free · Included with every build engagement</div>
+    </div>
+    <div class="phase-card reveal" style="--ph-color:var(--violet)">
+      <div class="ph-num">02</div>
+      <span class="ph-icon">⚙️</span>
+      <div class="ph-name">Build</div>
+      <div class="ph-desc">We use the right tool for each layer. Vibe coding tools like Lovable, v0, and Bolt accelerate UI and scaffolding. Cursor and Replit handle logic and integrations. Our DevOps engineers write infrastructure, deployment pipelines, and backend architecture from scratch — because some things shouldn't be AI-generated. Weekly progress demos throughout.</div>
+      <div class="ph-includes">✓ Weekly demos · Revision rounds included</div>
+    </div>
+    <div class="phase-card reveal" style="--ph-color:var(--teal)">
+      <div class="ph-num">03</div>
+      <span class="ph-icon">🚀</span>
+      <div class="ph-name">Prove &amp; Launch</div>
+      <div class="ph-desc">Every build includes a Proof of Launch QA and deploy cycle. Functional testing, real device lab, cloud infrastructure setup, app store submission if applicable. You don't just get code — you get a production-ready product with a written go/no-go report.</div>
+      <div class="ph-includes">✓ QA tier bundled · Cloud deploy included</div>
+    </div>
+  </div>
+  <div class="build-tiers">
+    <div class="bt-card reveal">
+      <div class="bt-tier">Build Tier 01</div>
+      <div class="bt-name">Starter Build</div>
+      <div class="bt-sub">Web app, internal tool, or landing page — AI-accelerated</div>
+      <div class="bt-price"><sup>$</sup>2,999</div>
+      <div class="bt-price-note">FLAT · ONE TIME</div>
+      <div class="bt-div"></div>
+      <ul class="bt-features">
+        <li>Discovery &amp; BD consulting (free)</li>
+        <li>Web app or internal tool build</li>
+        <li>Up to 5 core feature screens</li>
+        <li>Responsive design</li>
+        <li>Deployment to Vercel, Netlify, or Railway</li>
+        <li>Tier 1 Sanity Check QA included</li>
+      </ul>
+      <div class="bt-incl">QA included: <strong>Sanity Check ($399 value)</strong></div>
+      <div class="bt-timeline">⏱ ~2 week build</div>
+    </div>
+    <div class="bt-card featured reveal">
+      <div class="bt-badge">Most Popular</div>
+      <div class="bt-tier">Build Tier 02</div>
+      <div class="bt-name">Growth Build</div>
+      <div class="bt-sub">Full web or mobile app — hybrid vibe coding + engineering</div>
+      <div class="bt-price"><sup>$</sup>6,999</div>
+      <div class="bt-price-note">FLAT · ONE TIME</div>
+      <div class="bt-div"></div>
+      <ul class="bt-features">
+        <li>Discovery &amp; BD consulting (free)</li>
+        <li>Full web or mobile app build</li>
+        <li>Auth, database, API integrations</li>
+        <li>iOS and/or Android ready</li>
+        <li>2 rounds of revision</li>
+        <li>Domain, SSL, CI/CD setup</li>
+        <li>Tier 2 Launch Ready QA included</li>
+        <li>Weekly progress demos</li>
+      </ul>
+      <div class="bt-incl">QA included: <strong>Launch Ready ($1,499 value)</strong></div>
+      <div class="bt-timeline">⏱ 4–6 week build · vs. $12K+ freelance</div>
+    </div>
+    <div class="bt-card reveal">
+      <div class="bt-tier">Build Tier 03</div>
+      <div class="bt-name">Venture Build</div>
+      <div class="bt-sub">Complex platform — DevOps engineers from scratch, AI-assisted where it accelerates</div>
+      <div class="bt-price" style="font-size:32px;padding-top:12px;">Custom<br>Quote</div>
+      <div class="bt-price-note">SCOPED ON DISCOVERY</div>
+      <div class="bt-div"></div>
+      <ul class="bt-features">
+        <li>Full BD consulting + market analysis</li>
+        <li>Multi-role, multi-screen platform</li>
+        <li>Healthcare, Fintech, or marketplace builds</li>
+        <li>External integrations (APIs, EMRs, etc.)</li>
+        <li>DevOps infrastructure written from scratch</li>
+        <li>Multi-environment architecture (dev / staging / prod)</li>
+        <li>AI-accelerated where it adds speed — engineer-owned throughout</li>
+        <li>AWS / GCP / Azure infrastructure</li>
+        <li>Tier 3 Compliance Launch QA included</li>
+        <li>UAT with recruited test users</li>
+      </ul>
+      <div class="bt-incl">QA included: <strong>Compliance Launch ($3,499 value)</strong></div>
+      <div class="bt-timeline">⏱ 8–12 week build · vs. $20K–$40K agency</div>
+    </div>
+  </div>
+  <div class="tools-strip reveal">
+    <span class="tools-label">Our stack →</span>
+    <span class="tool-badge">Replit</span>
+    <span class="tool-badge">Lovable</span>
+    <span class="tool-badge">Cursor</span>
+    <span class="tool-badge">Bolt</span>
+    <span class="tool-badge">v0 by Vercel</span>
+    <span class="tool-badge" style="border-color:var(--teal);color:var(--teal);">DevOps from scratch</span>
+    <span class="tool-badge" style="border-color:var(--amber);color:var(--amber);">AI-assisted</span>
+  </div>
+
+  <div class="reveal" style="margin-top:2rem;padding:20px 28px;background:var(--bg3);border-left:3px solid var(--teal);max-width:780px;">
+    <span style="font-family:var(--fm);font-size:10px;letter-spacing:.12em;color:var(--teal);text-transform:uppercase;">Our philosophy</span>
+    <p style="margin-top:8px;font-size:15px;color:var(--muted2);line-height:1.7;"><strong style="color:var(--white);">Speed from AI. Trust from engineers.</strong> We use vibe coding and AI tools where they genuinely accelerate — UI scaffolding, rapid prototyping, iteration. Our DevOps engineers write infrastructure, deployment pipelines, and business-critical logic from scratch. Every build is AI-accelerated and human-owned.</p>
+  </div>
+</section>
+
+<section id="prove">
+  <div class="slabel">QA &amp; Launch Engineering</div>
+  <h2 class="stitle reveal">Already Built?<br>Let's Prove It.</h2>
+  <p class="ssub reveal">Bring us your existing app — vibe coded, agency built, or homegrown. We test it, harden it, and deploy it to production-grade infrastructure.</p>
+  <div class="prove-grid" style="grid-template-columns:repeat(5,1fr);">
+    <div class="pc reveal">
+      <div class="pc-tier">QA Tier 01</div>
+      <div class="pc-name">Sanity Check</div>
+      <div class="pc-for">Pre-submission gut check</div>
+      <div class="pc-price"><sup>$</sup>399</div>
+      <div class="pc-note">FLAT · ONE TIME</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>30 core test cases</li>
+        <li>Bug report (P1–P4 severity)</li>
+        <li>UX red flags noted</li>
+        <li>Screenshots of failures</li>
+        <li>Go / No-Go verdict</li>
+      </ul>
+      <div class="pc-time">⏱ 24-hour turnaround</div>
+    </div>
+    <div class="pc reveal">
+      <div class="pc-badge" style="background:var(--amber);color:var(--bg);">New</div>
+      <div class="pc-tier">QA Tier 02</div>
+      <div class="pc-name">Finish Line</div>
+      <div class="pc-for">Half-built app needs the finish</div>
+      <div class="pc-price"><sup>$</sup>799</div>
+      <div class="pc-note">FLAT · ONE TIME</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>One feature completion or bug fix sprint</li>
+        <li>DevOps or QA engineer assigned</li>
+        <li>Sanity Check QA bundled</li>
+        <li>Go / No-Go verdict</li>
+        <li>Ideal for stalled Replit or Lovable builds</li>
+      </ul>
+      <div class="pc-time">⏱ 48-hour turnaround</div>
+    </div>
+    <div class="pc featured reveal">
+      <div class="pc-badge">Most Popular</div>
+      <div class="pc-tier">QA Tier 03</div>
+      <div class="pc-name">Launch Ready</div>
+      <div class="pc-for">First real release</div>
+      <div class="pc-price"><sup>$</sup>1,499</div>
+      <div class="pc-note">FLAT · ONE TIME</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>80+ case full test suite</li>
+        <li>Basic physical device testing</li>
+        <li>Domain, SSL, env migration</li>
+        <li>UX + store metadata audit</li>
+        <li>Privacy policy check</li>
+        <li>Release notes drafted</li>
+        <li>One retest cycle after fixes</li>
+      </ul>
+      <div class="pc-time">⏱ 5-day turnaround</div>
+    </div>
+    <div class="pc reveal">
+      <div class="pc-tier">QA Tier 04</div>
+      <div class="pc-name">Compliance Launch</div>
+      <div class="pc-for">Healthcare &amp; Fintech apps</div>
+      <div class="pc-price"><sup>$</sup>3,499</div>
+      <div class="pc-note">FLAT · ONE TIME</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>Everything in Launch Ready</li>
+        <li>Full device matrix testing</li>
+        <li>HIPAA permissions audit</li>
+        <li>Data encryption verification</li>
+        <li>Security &amp; auth edge cases</li>
+        <li>CI/CD + DB migration</li>
+        <li>Compliance summary memo</li>
+      </ul>
+      <div style="margin-top:12px;font-family:var(--fm);font-size:9px;color:var(--muted2);font-style:italic;">HIPAA consultants alone charge $2K–$5K</div>
+      <div class="pc-time">⏱ 7-day turnaround</div>
+    </div>
+    <div class="pc reveal">
+      <div class="pc-tier">QA Tier 05</div>
+      <div class="pc-name">Retainer</div>
+      <div class="pc-for">Teams shipping weekly</div>
+      <div class="pc-price"><sup>$</sup>3,500</div>
+      <div class="pc-note">PER MONTH</div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li>Up to 4 QA cycles / month</li>
+        <li>2 physical device regression passes</li>
+        <li>Hotfix verification</li>
+        <li>Infra health monitoring</li>
+        <li>Dedicated Slack channel</li>
+        <li>Monthly QA summary</li>
+        <li>Priority queue</li>
+      </ul>
+      <div style="margin-top:12px;font-family:var(--fm);font-size:9px;color:var(--muted2);font-style:italic;">vs. $6K–$8K/mo for a junior US QA hire</div>
+      <div class="pc-time">⏱ Priority turnaround</div>
+    </div>
+  </div>
+  <div class="prove-addons">
+    <div class="addon reveal">
+      <div class="addon-ico">🚨</div>
+      <div>
+        <div class="addon-name">Rejection Recovery</div>
+        <div class="addon-desc">Got rejected by App Store or Google Play? Fast audit + resubmission readiness.</div>
+      </div>
+      <div class="addon-p">
+        <div class="addon-pnum">$499</div>
+        <div class="addon-pnote">48-hr turnaround</div>
+      </div>
+    </div>
+    <div class="addon reveal">
+      <div class="addon-ico">📱</div>
+      <div>
+        <div class="addon-name">Real Device Audit</div>
+        <div class="addon-desc">Device-specific crashes post-launch? 3-device physical audit with bug report.</div>
+      </div>
+      <div class="addon-p">
+        <div class="addon-pnum">$699</div>
+        <div class="addon-pnote">48-hr turnaround</div>
+      </div>
+    </div>
+  </div>
+  <div class="full-cycle reveal">
+    <div class="fc-left">
+      <div class="fc-ico">🏗️</div>
+      <div>
+        <div class="fc-name">Full Cycle</div>
+        <div class="fc-desc">Complex platforms, regulated industries, funded startups. Phased QA, recruited UAT users, load testing, security audits, full cloud architecture. Scoped on discovery call.</div>
+      </div>
+    </div>
+    <div class="fc-p">
+      <div class="fc-pnum">Custom Quote</div>
+      <div class="fc-pnote">2–5 week engagement</div>
+    </div>
+  </div>
+</section>
+
+<section id="devices">
+  <div class="devices-layout">
+    <div class="reveal">
+      <div class="slabel">Real Device Lab</div>
+      <h2 class="stitle">What Simulators<br>Won't Catch.</h2>
+      <p class="ssub" style="margin-bottom:0;">Touch target failures. Camera permission bugs after restart. Offline sync breaking on iOS PWA. These only appear on real hardware — and that's exactly what our Manila-based device lab tests on.</p>
+      <div class="field-list">
+        <div class="fitem">
+          <div class="fitem-ico">📷</div>
+          <div><div class="fitem-title">Camera permissions after app restart</div><div class="fitem-desc">Permission state changes between sessions — simulators never replicate this.</div></div>
+        </div>
+        <div class="fitem">
+          <div class="fitem-ico">☀️</div>
+          <div><div class="fitem-title">Outdoor sunlight readability</div><div class="fitem-desc">Clinical and field apps must be readable in direct sunlight. We test there.</div></div>
+        </div>
+        <div class="fitem">
+          <div class="fitem-ico">📶</div>
+          <div><div class="fitem-title">Offline sync and reconnect cycles</div><div class="fitem-desc">Data entered offline → airplane mode off → sync verified in database.</div></div>
+        </div>
+        <div class="fitem">
+          <div class="fitem-ico">📹</div>
+          <div><div class="fitem-title">WebRTC video device-to-device</div><div class="fitem-desc">Video call quality on actual mobile hardware — not a desktop Chrome tab.</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div style="font-family:var(--fm);font-size:10px;color:var(--muted);letter-spacing:.1em;text-transform:uppercase;margin-bottom:12px;">Our Device Fleet — Manila Lab</div>
+      <div class="device-grid">
+        <div class="dcard crit"><span class="dbadge crit">Critical</span><div class="dcard-ico">📱</div><div class="dcard-name">Samsung Galaxy Tab A</div><div class="dcard-os">Android 13 · PWA workflows</div></div>
+        <div class="dcard crit"><span class="dbadge crit">Critical</span><div class="dcard-ico">📱</div><div class="dcard-name">Samsung Galaxy S</div><div class="dcard-os">Android 13 · Consumer apps</div></div>
+        <div class="dcard hi"><span class="dbadge hi">High</span><div class="dcard-ico">🍎</div><div class="dcard-name">iPhone 14</div><div class="dcard-os">iOS 17 · Safari PWA</div></div>
+        <div class="dcard hi"><span class="dbadge hi">High</span><div class="dcard-ico">🍎</div><div class="dcard-name">iPad 10th Gen</div><div class="dcard-os">iPadOS 17 · Clinical</div></div>
+        <div class="dcard hi"><span class="dbadge hi">High</span><div class="dcard-ico">📱</div><div class="dcard-name">Google Pixel</div><div class="dcard-os">Android Stock · Baseline</div></div>
+        <div class="dcard med"><span class="dbadge med">Medium</span><div class="dcard-ico">📱</div><div class="dcard-name">Samsung A Series</div><div class="dcard-os">Android 12 · Perf floor</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-layout">
+    <div class="reveal">
+      <div class="slabel">Get Started</div>
+      <h2 class="contact-h">Have an Idea<br>or an App?<br><span style="color:var(--teal)">We Build Both.</span></h2>
+      <p class="contact-p">Tell us where you are — raw idea, app in progress, or ready to ship — and we'll come back within one business day with a clear next step. Discovery is always free.</p>
+      <div class="cfacts">
+        <div class="cfact"><div class="cfact-ico">💡</div><span><strong>Discovery is free.</strong> No commitment, no invoice.</span></div>
+        <div class="cfact"><div class="cfact-ico">⚡</div><span><strong>24-hour response</strong> on all new project inquiries.</span></div>
+        <div class="cfact"><div class="cfact-ico">🌏</div><span>Chicago HQ · <strong>Manila engineering team</strong> — DevOps, QA, and AI-assisted developers.</span></div>
+        <div class="cfact"><div class="cfact-ico">🔒</div><span>All projects covered by <strong>NDA and IP agreement</strong> from day one.</span></div>
+        <div class="cfact"><div class="cfact-ico">💳</div><span><strong>Flat-rate pricing</strong> — no hidden fees, no hourly surprises.</span></div>
+      </div>
+    </div>
+    <div class="reveal">
+      <form class="cform" onsubmit="handleSubmit(event)">
+        <div class="frow">
+          <div class="fg"><label>Your Name</label><input type="text" placeholder="Jane Smith" required></div>
+          <div class="fg"><label>Email</label><input type="email" placeholder="jane@yourapp.com" required></div>
+        </div>
+        <div class="fg">
+          <label>What do you need?</label>
+          <select required>
+            <option value="">Select your situation</option>
+            <optgroup label="── BUILD SERVICE ──">
+              <option>I have an idea — Discovery &amp; Build (free discovery)</option>
+              <option>Starter Build — Web app or tool ($2,999)</option>
+              <option>Growth Build — Full app ($6,999)</option>
+              <option>Venture Build — Complex platform (custom quote)</option>
+            </optgroup>
+            <optgroup label="── QA &amp; LAUNCH ──">
+              <option>Sanity Check — Quick QA ($399)</option>
+              <option>Finish Line — Complete my half-built app ($799)</option>
+              <option>Launch Ready — Full QA + deploy ($1,499)</option>
+              <option>Compliance Launch — Healthcare/Fintech ($3,499)</option>
+              <option>Retainer — Ongoing QA ($3,500/mo)</option>
+              <option>Rejection Recovery ($499)</option>
+              <option>Real Device Audit ($699)</option>
+              <option>Full Cycle (custom quote)</option>
+            </optgroup>
+            <option>Not sure yet — let's talk</option>
+          </select>
+        </div>
+        <div class="frow">
+          <div class="fg"><label>App / Project Name</label><input type="text" placeholder="Or 'Untitled idea'"></div>
+          <div class="fg">
+            <label>Platform</label>
+            <select>
+              <option value="">Select</option>
+              <option>iOS</option><option>Android</option><option>iOS + Android</option>
+              <option>Web App</option><option>All Platforms</option><option>Not sure yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="fg"><label>Tell us more</label><textarea placeholder="What's the idea or app? Target users? Known issues? Timeline pressure? Even rough notes work."></textarea></div>
+        <button type="submit" class="fsub">Send — We'll Respond Within 24 Hours →</button>
+        <div class="fnote">All information kept strictly confidential. Discovery conversations are always free.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="flogo">PROOF<em>OF</em>LAUNCH LLC</div>
+  <ul class="flinks">
+    <li><a href="#pillars">Services</a></li>
+    <li><a href="#build">Build</a></li>
+    <li><a href="#prove">QA &amp; Launch</a></li>
+    <li><a href="#devices">Device Lab</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="fcopy">© 2025 Proof of Launch LLC · Wyoming · proofoflaunch.com</div>
+</footer>
+
+<script>
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
+}, {threshold:.08, rootMargin:'0px 0px -40px 0px'});
+reveals.forEach((el,i) => { el.style.transitionDelay=`${(i%4)*70}ms`; obs.observe(el); });
+
+function handleSubmit(e){
+  e.preventDefault();
+  const btn = e.target.querySelector('.fsub');
+  btn.textContent="✓ Received — We'll be in touch within 24 hours";
+  btn.style.background='#009E80'; btn.style.clipPath='none'; btn.disabled=true;
+}
+
+const secs=document.querySelectorAll('section[id]');
+const nlinks=document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  secs.forEach(s=>{if(window.scrollY>=s.offsetTop-130)cur=s.id;});
+  nlinks.forEach(a=>{a.style.color=a.getAttribute('href')==='#'+cur?'var(--teal)':'';});
+},{passive:true});
+</script>
+</body>
+</html>

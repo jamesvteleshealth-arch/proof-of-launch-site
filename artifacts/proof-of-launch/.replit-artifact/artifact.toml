@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "Proof of Launch"
+version = "1.0.0"
+id = "artifacts/proof-of-launch"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19350
+
+[services.development]
+run = "pnpm --filter @workspace/proof-of-launch run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/proof-of-launch", "run", "build" ]
+publicDir = "artifacts/proof-of-launch/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19350"
+BASE_PATH = "/"

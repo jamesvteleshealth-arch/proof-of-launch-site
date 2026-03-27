@@ -50,6 +50,18 @@ Every package extends `tsconfig.base.json` which sets `composite: true`. The roo
 
 ## Packages
 
+### `artifacts/proof-of-launch` (`@workspace/proof-of-launch`)
+
+Proof of Launch landing page — a React + Vite frontend-only website. Dark-themed landing page for a development studio offering Build and QA services.
+
+- Frontend only (no backend needed)
+- Custom CSS (not Tailwind) with CSS custom properties for theming
+- Fonts: Barlow Condensed (headings), DM Sans (body), DM Mono (code/labels)
+- Colors: dark navy bg, teal primary (#00D4AA), amber (#FFB800), violet (#8B5CF6)
+- Sections: Hero, Marquee, Pillars (Build/Prove), Build Phases, Build Tiers (pricing), QA Tiers (pricing), Device Lab, Contact Form, Footer
+- Scroll-reveal animations via IntersectionObserver
+- Responsive breakpoints at 1100px and 640px
+
 ### `artifacts/api-server` (`@workspace/api-server`)
 
 Express 5 API server. Routes live in `src/routes/` and use `@workspace/api-zod` for request and response validation and `@workspace/db` for persistence.
