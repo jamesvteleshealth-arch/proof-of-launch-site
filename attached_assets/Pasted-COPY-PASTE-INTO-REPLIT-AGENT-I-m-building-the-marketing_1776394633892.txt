@@ -1,0 +1,46 @@
+COPY-PASTE INTO REPLIT AGENT
+I'm building the marketing site for Proof of Launch — an AI-native product studio for healthtech, fintech, and retail. I need a production-ready Next.js site deployed to Vercel.
+
+THREE FILES TO REVIEW BEFORE YOU START:
+
+1. proofoflaunch.html — the completed static design reference. This is NOT code to copy line-for-line. It IS the visual spec. Preserve exactly:
+   - Color palette (dark navy bg, teal primary, amber secondary, violet tertiary)
+   - Typography (Barlow Condensed display, DM Sans body, DM Mono labels)
+   - Visual motifs (hexagonal logo, bracket-clipped buttons, grid overlay, noise texture, radial glows, reveal-on-scroll animations)
+   - Section structure and spacing
+
+2. content.json — every piece of copy, every price, every portfolio card, pre-structured. Load this into config/content files. DO NOT hardcode strings into components.
+
+3. ProofOfLaunch_PositioningMemo_v1.docx — the voice and positioning source of truth. When in doubt on tone, refer to this document.
+
+TECH STACK (non-negotiable):
+- Next.js 14+ with App Router
+- TypeScript
+- Tailwind CSS (convert the CSS variables from the HTML into tailwind.config.ts theme extensions — do not hardcode hex values in components)
+- next/font/google for fonts (not CDN links)
+- Resend for contact form email delivery
+- Deploy target: Vercel
+
+BEFORE YOU WRITE A SINGLE LINE OF CODE:
+
+1. Read all three files carefully.
+2. Produce a proposed file structure (app/ directory layout, components/, content/, lib/).
+3. List every component you'll build with a one-line description of each.
+4. Call out any content you see in content.json that should become a reusable component variant (e.g., the three portfolio cards share a structure — that's one component with color variants, not three).
+5. Ask any clarifying questions about design decisions, ambiguous copy, or technical trade-offs.
+
+DO NOT START CODING UNTIL I APPROVE YOUR PLAN.
+
+When you do start building, build ONE SECTION AT A TIME and let me review each before moving to the next. Order: nav → hero → marquee → tracks → portfolio → studio → launchops → devices → contact → footer.
+
+CRITICAL PRESERVATION RULES:
+- The hero headline reads exactly: "THE PROOF / IS IN / THE LAUNCH" on three lines, with the third line in outline-only style.
+- The verticals (healthtech, fintech, retail) must be visible in the hero eyebrow.
+- The tagline "The proof is in the launch" appears in the hero journey card AND the footer.
+- Portfolio section has exactly three cards, color-coded (teal/violet/amber) — preserve all three.
+- Pricing is exactly as specified in content.json — do not round, do not adjust.
+- The contact form has 6 situation options (not 13) and includes a Vertical dropdown.
+
+Ready to start? Read the files and send me your plan.
+WHY THIS PROMPT WORKS
+It forces a planning phase (prevents the agent from guessing). It names the stack (prevents the agent from picking its favorite). It specifies content-vs-code separation (prevents hardcoding). It establishes section-by-section review (prevents whole-site rebuilds when something's wrong). It names the hero headline specifically (prevents 'creative improvements').

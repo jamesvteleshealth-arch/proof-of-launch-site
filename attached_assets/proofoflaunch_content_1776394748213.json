@@ -1,0 +1,609 @@
+{
+  "_meta": {
+    "description": "Proof of Launch — Site Content Configuration",
+    "version": "1.0.0",
+    "lastUpdated": "2026-04-16",
+    "notes": "Source of truth for all site copy. Replit should load this into config/content files rather than hardcoding inline. All pricing, portfolio entries, and tier details live here. Update this file — not component JSX — when copy changes."
+  },
+
+  "brand": {
+    "name": "Proof of Launch",
+    "legalName": "Proof of Launch LLC",
+    "jurisdiction": "Wyoming",
+    "tagline": "The proof is in the launch.",
+    "oneLiner": "Proof of Launch is the AI-native product studio for healthtech, fintech, and retail. The proof is in the launch.",
+    "verticals": ["Healthtech", "Fintech", "Retail"],
+    "foundedYear": 2026,
+    "domain": "proofoflaunch.com",
+    "contactEmail": "hello@proofoflaunch.com"
+  },
+
+  "designSystem": {
+    "colors": {
+      "bg":       { "value": "#05080F", "description": "primary background, near-black navy" },
+      "bg2":      { "value": "#090E1A", "description": "elevated surface 1" },
+      "bg3":      { "value": "#0E1525", "description": "elevated surface 2" },
+      "bg4":      { "value": "#131C30", "description": "elevated surface 3 (hover)" },
+      "teal":     { "value": "#00D4AA", "description": "primary accent — LaunchOps, CTAs, links" },
+      "tealDim":  { "value": "#009E80", "description": "teal hover/success state" },
+      "tealBright": { "value": "#00F4C4", "description": "teal hover highlight" },
+      "amber":    { "value": "#FFB800", "description": "secondary accent — finance vertical, discovery" },
+      "violet":   { "value": "#8B5CF6", "description": "tertiary accent — Studio track, retail vertical" },
+      "red":      { "value": "#FF4D4D", "description": "error/critical" },
+      "blue":     { "value": "#3B82F6", "description": "info" },
+      "white":    { "value": "#EFF6FF", "description": "primary text" },
+      "muted":    { "value": "#3D5470", "description": "de-emphasized text, borders" },
+      "muted2":   { "value": "#6B88A0", "description": "body copy muted" },
+      "border":   { "value": "#0F1E30", "description": "subtle border" },
+      "border2":  { "value": "#182840", "description": "visible border" }
+    },
+    "typography": {
+      "display":  { "family": "Barlow Condensed", "weights": [400, 600, 700, 800, 900], "use": "h1, h2, display numbers, tier names, big stats" },
+      "body":     { "family": "DM Sans", "weights": [300, 400, 500, 600], "italic": true, "use": "paragraphs, body copy, feature lists" },
+      "mono":     { "family": "DM Mono", "weights": [400, 500], "use": "eyebrow labels, tags, code-style accents, tier numbers" }
+    },
+    "visualMotifs": [
+      "Hexagonal logo mark (clip-path polygon)",
+      "Bracket-shaped clip-path on primary buttons (angled left edge, angled right edge)",
+      "Subtle grid overlay on backgrounds (64px × 64px teal lines at 2% opacity)",
+      "Fractal noise texture overlay at 3% opacity",
+      "Radial glow accents in hero (teal top-right, violet bottom-left)",
+      "3px colored top border on cards indicating track/vertical",
+      "Scroll-triggered reveal animations (fade + translateY)",
+      "Monospace comment-style section dividers ('// two tracks. one discipline.')"
+    ]
+  },
+
+  "nav": {
+    "logo": { "mark": "POL", "wordmark": "PROOF<em>OF</em>LAUNCH" },
+    "links": [
+      { "label": "Tracks",    "href": "#tracks" },
+      { "label": "Portfolio", "href": "#portfolio" },
+      { "label": "Studio",    "href": "#studio" },
+      { "label": "LaunchOps", "href": "#launchops" },
+      { "label": "Device Lab","href": "#devices" }
+    ],
+    "cta": { "label": "Start a Project", "href": "#contact" }
+  },
+
+  "hero": {
+    "eyebrow": "AI-Native Product Studio · Healthtech · Fintech · Retail",
+    "headline": {
+      "lines": [
+        { "text": "THE PROOF", "style": "solid-white" },
+        { "text": "IS IN",     "style": "solid-teal" },
+        { "text": "THE LAUNCH.","style": "outline-only" }
+      ]
+    },
+    "subhead": "Proof of Launch is an AI-native product studio for **healthtech, fintech, and retail** — industries where launching wrong becomes a compliance event, not just a bad review. We build fast with AI. We prove every launch on real devices. **We ship our own apps this way first.**",
+    "primaryCta":   { "label": "Start a Project",     "href": "#contact" },
+    "secondaryCta": { "label": "See Our Two Tracks ↓","href": "#tracks" },
+    "journeyCard": {
+      "header": "// Two tracks. One discipline.",
+      "steps": [
+        {
+          "num": "01",
+          "color": "amber",
+          "title": "Discovery",
+          "description": "Short call with James. Where are you — raw idea, app in progress, or ready to ship? We route you to the right track.",
+          "tag": "Free · 20 min"
+        },
+        {
+          "num": "02",
+          "color": "violet",
+          "title": "Studio — if you need it built",
+          "description": "AI-accelerated build with engineering where it matters. Healthtech, fintech, or retail — we've shipped in each.",
+          "tag": "2–12 Weeks"
+        },
+        {
+          "num": "03",
+          "color": "teal",
+          "title": "LaunchOps — always",
+          "description": "Every build ends in our QA discipline. Real device lab. App store readiness. Compliance review for regulated launches.",
+          "tag": "24 hrs – 7 days"
+        },
+        {
+          "num": "04",
+          "color": "green",
+          "colorHex": "#10B981",
+          "title": "Proven live",
+          "description": "You ship with a written go/no-go report, not a hope. Ongoing retainer available for teams shipping weekly.",
+          "tag": "The proof is in the launch"
+        }
+      ]
+    }
+  },
+
+  "marquee": {
+    "items": [
+      "Healthtech · HIPAA-Aware",
+      "Fintech · Compliance-Ready",
+      "Retail · Field-Tested",
+      "Replit · Lovable · Cursor · Bolt · v0",
+      "Real Device Lab",
+      "AWS · GCP · Azure · DigitalOcean",
+      "App Store Compliance",
+      "Engineering From Scratch",
+      "The Proof Is In The Launch"
+    ],
+    "animationSpeed": "30s"
+  },
+
+  "tracksSection": {
+    "eyebrow": "Our Two Tracks",
+    "headline": "One Studio.\nTwo Tracks.",
+    "subhead": "We built our own apps across healthtech, retail, and finance — used daily in production. Now we productize the same discipline for clients. Come to us with a raw idea, or an app that's already built. Either way, you leave with something proven.",
+    "tracks": [
+      {
+        "id": "studio",
+        "number": "TRACK ONE",
+        "name": "Studio",
+        "color": "violet",
+        "icon": "🏗️",
+        "bgText": "STUDIO",
+        "tagline": "You need an app built. We validate, scope, and build — AI-accelerated for speed, engineer-owned for reliability. Every Studio build ships through LaunchOps QA. Priced flat. Scoped tight.",
+        "features": [
+          "Discovery call with James — free, no deck",
+          "Healthtech, fintech, or retail focus",
+          "AI tools where they accelerate — Replit, Lovable, Cursor, Bolt, v0",
+          "Engineers write infrastructure and critical logic from scratch",
+          "LaunchOps QA bundled in every tier",
+          "Flat pricing from $2,999 · phased billing"
+        ],
+        "cta": { "label": "See Studio Tiers →", "href": "#studio" }
+      },
+      {
+        "id": "launchops",
+        "number": "TRACK TWO",
+        "name": "LaunchOps",
+        "color": "teal",
+        "icon": "🔬",
+        "bgText": "LAUNCHOPS",
+        "tagline": "You already built something. We test it, harden it, deploy it, and prove it's ready to ship — on real hardware, in real conditions. Built specifically for AI-generated apps in regulated industries.",
+        "features": [
+          "Functional QA — 30 to 80+ test cases per tier",
+          "Real device lab — iOS & Android, not simulators",
+          "Cloud migration off Replit to AWS, GCP, Azure",
+          "App store compliance + HIPAA/fintech audit",
+          "Flat pricing from $499 · same-week turnaround",
+          "Rejection Recovery for rejected App Store submissions"
+        ],
+        "cta": { "label": "See LaunchOps Tiers →", "href": "#launchops" }
+      }
+    ]
+  },
+
+  "portfolio": {
+    "eyebrow": "Our Operating History",
+    "headline": "We Ship This Stuff\nOurselves.",
+    "subhead": "Most studios claim vertical experience from the last three client logos they added to their site. We operate businesses in healthtech, retail, and finance — with apps built by our own team, running in production today. This is where our discipline comes from.",
+    "cards": [
+      {
+        "id": "healthtech-field-app",
+        "vertical": "Healthtech",
+        "color": "teal",
+        "name": "Clinical Field App",
+        "description": "AI-built patient intake and clinical workflow tool used daily by field staff. HIPAA-aware permissions, real-device tested, offline-capable.",
+        "stat": "200+",
+        "statLabel": "Clinical staff · Daily active",
+        "bullets": [
+          "HIPAA permission flows verified on real hardware",
+          "Offline-first — syncs PHI without data loss",
+          "Outdoor-readable in field conditions",
+          "Zero compliance incidents since launch"
+        ],
+        "note": "Sister company · Anonymized"
+      },
+      {
+        "id": "retail-ops",
+        "vertical": "Retail",
+        "color": "violet",
+        "name": "Operations & Inventory",
+        "description": "Field operations and inventory management tool used across multiple store locations. Budget-Android hardware, spotty Wi-Fi, high daily transaction volume.",
+        "stat": "Multi-site",
+        "statLabel": "Locations · Operational",
+        "bullets": [
+          "Offline sync tested against real-world network drops",
+          "Runs on budget Android hardware by design",
+          "Barcode scanning verified on actual store devices",
+          "Supports daily operations without engineering handholding"
+        ],
+        "note": "Sister company · Anonymized"
+      },
+      {
+        "id": "finance-compliance",
+        "vertical": "Finance",
+        "color": "amber",
+        "name": "Compliance Workflow",
+        "description": "Customer onboarding and compliance-gated workflow with audit trails. KYC flows, edge-case validation, and regulatory gating built AI-accelerated but engineer-owned.",
+        "stat": "In production",
+        "statLabel": "Compliance-ready · Audit-capable",
+        "bullets": [
+          "KYC flows tested against edge-case identifiers",
+          "Audit trail complete and exportable",
+          "Regulatory gating on every transition point",
+          "Built to survive a real compliance review, not just look clean"
+        ],
+        "note": "Sister company · Anonymized"
+      }
+    ],
+    "closer": {
+      "icon": "🧭",
+      "title": "Why this matters for you.",
+      "text": "We don't learn compliance flows on your project. We don't discover offline sync breakage on your clients. The failure modes that show up in healthtech, fintech, and retail apps — we've already hit them, fixed them, and turned the fixes into SOPs. That's what you get when you hire Proof of Launch."
+    }
+  },
+
+  "studioSection": {
+    "eyebrow": "Studio Track",
+    "headline": "From Idea to App\nin Three Phases.",
+    "subhead": "Every Studio build starts with a short discovery call — no code, no cost, just a sharp conversation about what you're building, which regulated vertical you're in, and whether it has legs. We've shipped apps in healthtech, retail, and fintech ourselves. We know where AI-generated code breaks in each.",
+    "phases": [
+      {
+        "num": "01",
+        "color": "amber",
+        "icon": "💡",
+        "name": "Discovery & Business Development",
+        "description": "James leads a structured discovery session to validate your idea, identify the market opportunity, define your MVP scope, choose the right tech stack, and produce a build estimate. This is where most studios charge $2,000+. We include it free — because a bad build scope wastes everyone's time.",
+        "includes": "✓ Free · Included with every build engagement"
+      },
+      {
+        "num": "02",
+        "color": "violet",
+        "icon": "⚙️",
+        "name": "Build",
+        "description": "We use the right tool for each layer. Vibe coding tools like Lovable, v0, and Bolt accelerate UI and scaffolding. Cursor and Replit handle logic and integrations. Our engineers write infrastructure, deployment pipelines, and backend architecture from scratch — because some things shouldn't be AI-generated. Weekly progress demos throughout.",
+        "includes": "✓ Weekly demos · Revision rounds included"
+      },
+      {
+        "num": "03",
+        "color": "teal",
+        "icon": "🚀",
+        "name": "Prove & Launch",
+        "description": "Every build includes a Proof of Launch QA and deploy cycle. Functional testing, real device lab, cloud infrastructure setup, app store submission if applicable. You don't just get code — you get a production-ready product with a written go/no-go report.",
+        "includes": "✓ QA tier bundled · Cloud deploy included"
+      }
+    ],
+    "tiers": [
+      {
+        "id": "starter-build",
+        "number": "Build Tier 01",
+        "name": "Starter Build",
+        "subtitle": "Web app, internal tool, or landing page — AI-accelerated",
+        "price": 2999,
+        "priceDisplay": "$2,999",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "features": [
+          "Discovery & BD consulting (free)",
+          "Web app or internal tool build",
+          "Up to 5 core feature screens",
+          "Responsive design",
+          "Deployment to Vercel, Netlify, or Railway",
+          "Tier 1 Sanity Check QA included"
+        ],
+        "includedQa": { "label": "Sanity Check", "value": 499 },
+        "timeline": "⏱ ~2 week build"
+      },
+      {
+        "id": "growth-build",
+        "number": "Build Tier 02",
+        "name": "Growth Build",
+        "subtitle": "Full web or mobile app — hybrid AI + engineering",
+        "price": 6999,
+        "priceDisplay": "$6,999",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": true,
+        "badge": "Most Popular",
+        "features": [
+          "Discovery & BD consulting (free)",
+          "Full web or mobile app build",
+          "Auth, database, API integrations",
+          "iOS and/or Android ready",
+          "2 rounds of revision",
+          "Domain, SSL, CI/CD setup",
+          "Tier 2 Launch Ready QA included",
+          "Weekly progress demos"
+        ],
+        "includedQa": { "label": "Launch Ready", "value": 1499 },
+        "timeline": "⏱ 4–6 week build · vs. $12K+ freelance"
+      },
+      {
+        "id": "venture-build",
+        "number": "Build Tier 03",
+        "name": "Venture Build",
+        "subtitle": "Complex platform — engineers from scratch, AI-assisted where it accelerates",
+        "price": null,
+        "priceDisplay": "Custom Quote",
+        "priceNote": "SCOPED ON DISCOVERY",
+        "featured": false,
+        "features": [
+          "Full BD consulting + market analysis",
+          "Multi-role, multi-screen platform",
+          "Healthcare, Fintech, or marketplace builds",
+          "External integrations (APIs, EMRs, etc.)",
+          "Engineering infrastructure written from scratch",
+          "Multi-environment architecture (dev / staging / prod)",
+          "AI-accelerated where it adds speed — engineer-owned throughout",
+          "AWS / GCP / Azure infrastructure",
+          "Tier 3 Compliance Launch QA included",
+          "UAT with recruited test users"
+        ],
+        "includedQa": { "label": "Compliance Launch", "value": 3499 },
+        "timeline": "⏱ 8–12 week build · vs. $20K–$40K agency"
+      }
+    ],
+    "toolStack": {
+      "label": "Our stack →",
+      "tools": [
+        { "name": "Replit",            "style": "default" },
+        { "name": "Lovable",           "style": "default" },
+        { "name": "Cursor",            "style": "default" },
+        { "name": "Bolt",              "style": "default" },
+        { "name": "v0 by Vercel",      "style": "default" },
+        { "name": "Engineering from scratch", "style": "highlight-teal" },
+        { "name": "AI-assisted",       "style": "highlight-amber" }
+      ]
+    },
+    "philosophy": {
+      "eyebrow": "Our philosophy",
+      "headline": "Speed from AI. Trust from engineers.",
+      "text": "We use vibe coding and AI tools where they genuinely accelerate — UI scaffolding, rapid prototyping, iteration. Our engineers write infrastructure, deployment pipelines, and business-critical logic from scratch. Every build is AI-accelerated and human-owned."
+    }
+  },
+
+  "launchOpsSection": {
+    "eyebrow": "LaunchOps Track",
+    "headline": "Already Built?\nLet's Prove It.",
+    "subhead": "Bring us your existing app — vibe coded, agency built, or homegrown. We test it on real hardware, harden it, and deploy it to production infrastructure. Built specifically for AI-generated apps in regulated industries.",
+    "tiers": [
+      {
+        "id": "sanity-check",
+        "number": "QA Tier 01",
+        "name": "Sanity Check",
+        "forWhom": "Pre-submission gut check",
+        "price": 499,
+        "priceDisplay": "$499",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "features": [
+          "30 core test cases",
+          "Bug report (P1–P4 severity)",
+          "UX red flags noted",
+          "Screenshots of failures",
+          "Go / No-Go verdict"
+        ],
+        "turnaround": "⏱ 24-hour turnaround"
+      },
+      {
+        "id": "finish-line",
+        "number": "QA Tier 02",
+        "name": "Finish Line",
+        "forWhom": "Half-built app needs the finish",
+        "price": 799,
+        "priceDisplay": "$799",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "badge": { "label": "New", "color": "amber" },
+        "features": [
+          "One feature completion or bug fix sprint",
+          "Engineer assigned",
+          "Sanity Check QA bundled",
+          "Go / No-Go verdict",
+          "Ideal for stalled Replit or Lovable builds"
+        ],
+        "turnaround": "⏱ 48-hour turnaround"
+      },
+      {
+        "id": "launch-ready",
+        "number": "QA Tier 03",
+        "name": "Launch Ready",
+        "forWhom": "First real release",
+        "price": 1499,
+        "priceDisplay": "$1,499",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": true,
+        "badge": { "label": "Most Popular", "color": "teal" },
+        "features": [
+          "80+ case full test suite",
+          "Basic physical device testing",
+          "Domain, SSL, env migration",
+          "UX + store metadata audit",
+          "Privacy policy check",
+          "Release notes drafted",
+          "One retest cycle after fixes"
+        ],
+        "turnaround": "⏱ 5-day turnaround"
+      },
+      {
+        "id": "compliance-launch",
+        "number": "QA Tier 04",
+        "name": "Compliance Launch",
+        "forWhom": "Healthcare & Fintech apps",
+        "price": 3499,
+        "priceDisplay": "$3,499",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "features": [
+          "Everything in Launch Ready",
+          "Full device matrix testing",
+          "HIPAA permissions audit",
+          "Data encryption verification",
+          "Security & auth edge cases",
+          "CI/CD + DB migration",
+          "Compliance summary memo"
+        ],
+        "priceAnchor": "HIPAA consultants alone charge $2K–$5K",
+        "turnaround": "⏱ 7-day turnaround"
+      },
+      {
+        "id": "retainer",
+        "number": "QA Tier 05",
+        "name": "Retainer",
+        "forWhom": "Teams shipping weekly",
+        "price": 3900,
+        "priceDisplay": "$3,900",
+        "priceNote": "PER MONTH",
+        "featured": false,
+        "features": [
+          "Up to 4 QA cycles / month",
+          "2 physical device regression passes",
+          "Hotfix verification",
+          "Infra health monitoring",
+          "Dedicated Slack channel",
+          "Monthly QA summary",
+          "Priority queue"
+        ],
+        "priceAnchor": "vs. $6K–$8K/mo for a junior US QA hire · vs. $2,500/mo for AI-only tools",
+        "turnaround": "⏱ Priority turnaround"
+      }
+    ],
+    "addOns": [
+      {
+        "id": "rejection-recovery",
+        "name": "Rejection Recovery",
+        "icon": "🚨",
+        "description": "Got rejected by App Store or Google Play? Fast audit against the specific guideline cited, fix recommendations, resubmission readiness. Apple rejects ~25% of submissions — and the 2026 rules are tighter.",
+        "price": 699,
+        "priceDisplay": "$699",
+        "turnaround": "48-hr turnaround"
+      },
+      {
+        "id": "real-device-audit",
+        "name": "Real Device Audit",
+        "icon": "📱",
+        "description": "Device-specific crashes post-launch? 3-device physical audit with bug report. Tests the failures simulators never catch.",
+        "price": 899,
+        "priceDisplay": "$899",
+        "turnaround": "48-hr turnaround"
+      }
+    ],
+    "fullCycle": {
+      "id": "full-cycle",
+      "name": "Full Cycle",
+      "icon": "🏗️",
+      "description": "Complex platforms, regulated industries, funded startups. Phased QA, recruited UAT users, load testing, security audits, full cloud architecture. Scoped on discovery call.",
+      "price": null,
+      "priceDisplay": "Custom Quote",
+      "turnaround": "2–5 week engagement"
+    }
+  },
+
+  "devicesSection": {
+    "eyebrow": "Real Device Lab",
+    "headline": "What Simulators\nWon't Catch.",
+    "subhead": "Touch target failures. Camera permission bugs after restart. Offline sync breaking on iOS PWA. Screens washed out in sunlight. These only appear on real hardware — and they're exactly the failures that become clinical incidents, compliance events, or lost retail sales. Our device lab tests every LaunchOps engagement on actual phones and tablets.",
+    "failureModes": [
+      { "icon": "📷", "title": "Camera permissions after app restart", "description": "Permission state changes between sessions — simulators never replicate this." },
+      { "icon": "☀️", "title": "Outdoor sunlight readability",         "description": "Clinical and field apps must be readable in direct sunlight. We test there." },
+      { "icon": "📶", "title": "Offline sync and reconnect cycles",    "description": "Data entered offline → airplane mode off → sync verified in database." },
+      { "icon": "📹", "title": "WebRTC video device-to-device",        "description": "Video call quality on actual mobile hardware — not a desktop Chrome tab." }
+    ],
+    "fleetLabel": "Our Device Fleet — Real Hardware, Real Conditions",
+    "devices": [
+      { "name": "Samsung Galaxy Tab A", "os": "Android 13 · PWA workflows",    "priority": "critical", "icon": "📱" },
+      { "name": "Samsung Galaxy S",     "os": "Android 13 · Consumer apps",    "priority": "critical", "icon": "📱" },
+      { "name": "iPhone 14",            "os": "iOS 17 · Safari PWA",           "priority": "high",     "icon": "🍎" },
+      { "name": "iPad 10th Gen",        "os": "iPadOS 17 · Clinical",          "priority": "high",     "icon": "🍎" },
+      { "name": "Google Pixel",         "os": "Android Stock · Baseline",      "priority": "high",     "icon": "📱" },
+      { "name": "Samsung A Series",     "os": "Android 12 · Perf floor",       "priority": "medium",   "icon": "📱" }
+    ]
+  },
+
+  "contactSection": {
+    "eyebrow": "Get Started",
+    "headline": "Have an Idea\nor an App?",
+    "headlineAccent": "We Build Both.",
+    "subhead": "Tell us where you are — raw idea, app in progress, or ready to ship — and we'll come back within one business day with a clear next step. Discovery is always free.",
+    "facts": [
+      { "icon": "💡", "text": "**Discovery is free.** Short call, no deck, no commitment." },
+      { "icon": "⚡", "text": "**24-hour response** on all new project inquiries." },
+      { "icon": "🏥", "text": "**Healthtech, fintech, retail.** We've shipped in each." },
+      { "icon": "🌏", "text": "Global team · **ops hub in Manila**. That's how we deliver 24-hour Tier 1 turnaround." },
+      { "icon": "🔒", "text": "All projects covered by **NDA and IP agreement** from day one." },
+      { "icon": "💳", "text": "**Flat-rate pricing** — no hidden fees, no hourly surprises." }
+    ],
+    "form": {
+      "fields": [
+        { "id": "name",  "label": "Your Name", "type": "text",  "placeholder": "Jane Smith", "required": true },
+        { "id": "email", "label": "Email",     "type": "email", "placeholder": "jane@yourapp.com", "required": true }
+      ],
+      "situationOptions": [
+        "I have an idea — need it built (Studio)",
+        "App is half-built — need help finishing (Studio or Finish Line)",
+        "App is built — need QA before launch (LaunchOps)",
+        "App was rejected by App Store / Play Store (Rejection Recovery)",
+        "Shipping weekly — need ongoing QA (LaunchOps Retainer)",
+        "Not sure yet — let's talk"
+      ],
+      "verticalOptions": [
+        "Healthtech",
+        "Fintech",
+        "Retail",
+        "Other regulated industry",
+        "Consumer / other"
+      ],
+      "platformOptions": [
+        "iOS",
+        "Android",
+        "iOS + Android",
+        "Web App",
+        "All Platforms",
+        "Not sure yet"
+      ],
+      "submitLabel": "Send — We'll Respond Within 24 Hours →",
+      "successMessage": "✓ Received — We'll be in touch within 24 hours",
+      "disclaimer": "All information kept strictly confidential. Discovery conversations are always free."
+    },
+    "calendlyLinks": {
+      "studio":    { "label": "Or book a 30-min Studio discovery call",  "url": "https://calendly.com/proofoflaunch/studio-discovery" },
+      "launchops": { "label": "Or book a 20-min LaunchOps intake call",  "url": "https://calendly.com/proofoflaunch/launchops-intake" }
+    }
+  },
+
+  "footer": {
+    "links": [
+      { "label": "Tracks",    "href": "#tracks" },
+      { "label": "Portfolio", "href": "#portfolio" },
+      { "label": "Studio",    "href": "#studio" },
+      { "label": "LaunchOps", "href": "#launchops" },
+      { "label": "Device Lab","href": "#devices" },
+      { "label": "Contact",   "href": "#contact" }
+    ],
+    "tagline": "The Proof Is In The Launch.",
+    "copyright": "© 2026 Proof of Launch LLC · Wyoming · Healthtech · Fintech · Retail"
+  },
+
+  "seo": {
+    "title": "Proof of Launch — AI-Native Product Studio for Healthtech, Fintech & Retail",
+    "description": "AI-accelerated app builds and rigorous launch QA for regulated industries. Healthtech, fintech, and retail apps tested on real devices. The proof is in the launch.",
+    "keywords": [
+      "AI product studio",
+      "vibe coding QA",
+      "app store compliance",
+      "HIPAA app testing",
+      "fintech compliance review",
+      "real device testing",
+      "Replit app QA",
+      "Lovable app testing",
+      "Bolt app launch",
+      "rejection recovery app store"
+    ],
+    "ogImage": "/og-image.png",
+    "twitterHandle": "@proofoflaunch",
+    "schema": {
+      "organizationType": "Organization",
+      "name": "Proof of Launch",
+      "url": "https://proofoflaunch.com",
+      "logo": "https://proofoflaunch.com/logo.png",
+      "sameAs": [
+        "https://twitter.com/proofoflaunch",
+        "https://linkedin.com/company/proofoflaunch"
+      ],
+      "services": [
+        { "name": "Studio — App Development", "description": "AI-accelerated app builds for healthtech, fintech, and retail" },
+        { "name": "LaunchOps — Pre-Launch QA", "description": "Real-device QA, compliance review, and App Store submission prep for AI-built apps" }
+      ]
+    }
+  }
+}
