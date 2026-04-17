@@ -6,26 +6,32 @@ import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { LaunchOpsSection } from "@/components/sections/LaunchOpsSection";
 import { StudioSection } from "@/components/sections/StudioSection";
 import { DevicesSection } from "@/components/sections/DevicesSection";
+import { ContactSection } from "@/components/sections/ContactSection";
+import { Footer } from "@/components/Footer";
 import content from "@/content/content.json";
 
 export default function HomePage() {
   return (
-    <main>
-      <Nav
-        logo={content.nav.logo}
-        links={content.nav.links}
-        cta={content.nav.cta}
-      />
-      <HeroSection hero={content.hero} />
-      <Marquee
-        items={content.marquee.items}
-        animationSpeed={content.marquee.animationSpeed}
-      />
-      <TracksSection tracksSection={content.tracksSection} />
-      <PortfolioSection portfolio={content.portfolio} />
-      <LaunchOpsSection launchOpsSection={content.launchOpsSection} />
-      <StudioSection studioSection={content.studioSection} />
-      <DevicesSection devicesSection={content.devicesSection} />
-    </main>
+    <>
+      <main>
+        <Nav
+          logo={content.nav.logo}
+          links={content.nav.links}
+          cta={content.nav.cta}
+        />
+        <HeroSection hero={content.hero} />
+        <Marquee
+          items={content.marquee.items}
+          animationSpeed={content.marquee.animationSpeed}
+        />
+        <TracksSection tracksSection={content.tracksSection} />
+        <PortfolioSection portfolio={content.portfolio} />
+        <LaunchOpsSection launchOpsSection={content.launchOpsSection} />
+        <StudioSection studioSection={content.studioSection} />
+        <DevicesSection devicesSection={content.devicesSection} />
+        <ContactSection contactSection={content.contactSection} />
+      </main>
+      <Footer />
+    </>
   );
 }

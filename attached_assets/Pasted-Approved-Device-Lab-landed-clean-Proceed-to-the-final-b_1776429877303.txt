@@ -1,0 +1,28 @@
+Approved. Device Lab landed clean. Proceed to the final batch: Contact section + Footer.
+Directives for Contact:
+
+Two-column layout at desktop. Left column: eyebrow ("Get Started"), headline ("Have an Idea / or an App?" with "We Build Both." in teal accent), subhead, and six contact facts with icons. Right column: the form.
+Six contact facts in order (from content.json):
+
+💡 Discovery is free
+⚡ 24-hour response
+🏥 Healthtech, fintech, retail — we've shipped in each
+🌏 Global team · ops hub in Manila — this is the one honest Manila mention, keep it
+🔒 NDA and IP agreement
+💳 Flat-rate pricing
+
+
+Form fields in order: Name + Email on one row, "Where are you?" dropdown (6 options, LaunchOps situations first per the earlier reordering), Vertical dropdown (5 options), Platform dropdown (6 options), "Tell us more" textarea, submit button with text "Send — We'll Respond Within 24 Hours →"
+Submit behavior: Server action that logs the payload to console for now with a clear TODO: RESEND_API_KEY comment. Success state replaces button text with "✓ Received — We'll be in touch within 24 hours" and switches background to teal-dim.
+Below the form, two Calendly link-outs: "Or book a 30-min Studio discovery call" and "Or book a 20-min LaunchOps intake call." Both rendered with href="#" and data-calendly-pending="true" attribute, with muted styling and "Coming soon" label per our earlier directive.
+
+Directives for Footer:
+
+PROOFOFLAUNCH LLC wordmark with "OF" in teal.
+Six nav links in order: Tracks / Portfolio / LaunchOps / Studio / Device Lab / Contact. Matches the header nav order after the Track One/Two reordering.
+Tagline: "The Proof Is In The Launch." rendered in teal, Barlow Condensed, uppercase.
+Copyright: "© 2026 Proof of Launch LLC · Wyoming · Healthtech · Fintech · Retail"
+Mobile: Stacks cleanly with logo, links, tagline, copyright in vertical order.
+
+This is the final checkpoint before deployment. After this, I'll run a full-site QA pass against the content verification and technical verification checklists from the brief, then we'll move to GitHub → Vercel.
+Go.
