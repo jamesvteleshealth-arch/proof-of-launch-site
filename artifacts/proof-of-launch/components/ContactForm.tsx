@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState } from "react";
 import { submitContact, type ContactResult } from "@/app/actions";
 import { cn } from "@/lib/cn";
 
@@ -29,14 +29,17 @@ const labelClass =
 
 export function ContactForm({ form }: { form: FormConfig }) {
   const [result, setResult] = useState<ContactResult | null>(null);
-  const [isPending, startTransition] = useTransition();
+  const [isPending, setIsPending] = useState(false);
   const success = !!result?.ok;
 
-  function handleAction(formData: FormData) {
-    startTransition(async () => {
+  async function handleAction(formData: FormData) {
+    setIsPending(true);
+    try {
       const res = await submitContact(formData);
       setResult(res);
-    });
+    } finally {
+      setIsPending(false);
+    }
   }
 
   return (

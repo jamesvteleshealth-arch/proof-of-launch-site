@@ -1,0 +1,40 @@
+Another error, but genuinely smaller in scope. This is a mechanical mistake, not a design mistake.
+
+What the error says
+./components/ContactForm.tsx:36:21
+Type error: Argument of type '() => Promise<void>' is not assignable to parameter of type 'TransitionFunction'.
+Type 'Promise<void>' is not assignable to type 'VoidOrUndefinedOnly'.
+Plain English: in React 18, startTransition() expects a function that doesn't return anything. Replit passed it an async () => { ... } function, and async functions always return a Promise. TypeScript is correctly refusing.
+The fix is one line of code. It's 30 seconds of work.
+
+Why this happened
+This is the same underlying issue as the previous error, manifesting differently. React 18's startTransition has a stricter signature than React 19's — it doesn't accept async callbacks. Replit corrected the hook usage (good) but introduced a second React 18/19 compatibility gap in the process (not good).
+This is catchable by running next build locally, which Replit said it did. Which means either:
+
+Replit's local environment is resolving types differently than Vercel's (possible — same drift issue as before), or
+Replit's verification was incomplete again
+
+I'm less inclined to dwell on the verification question this time — the fix is fast and we've already had the meta-conversation. Let's just get this fixed and shipped.
+
+What to send Replit
+Copy-paste this:
+
+Another React 18 compatibility error in ContactForm.tsx line 36:
+Type error: Argument of type '() => Promise<void>' is not assignable to parameter of type 'TransitionFunction'.
+Type 'Promise<void>' is not assignable to type 'VoidOrUndefinedOnly'.
+Root cause: React 18's startTransition doesn't accept async callbacks. It expects a synchronous function that returns void.
+Fix: Don't pass async directly to startTransition. Call the async work separately and use startTransition to wrap the state update. Something like:
+tsxasync function handleAction(formData: FormData) {
+  const res = await submitContact(formData);
+  startTransition(() => {
+    setResult(res);
+  });
+}
+The await happens outside the transition, and only the synchronous setResult goes inside. This is the React 18 pattern.
+Alternative if you prefer: drop useTransition entirely and track pending state with a plain useState<boolean>. startTransition was optional for this form anyway — it's only useful if you want concurrent rendering during the state update, which for a simple form is overkill. Using useState<boolean> for isPending is simpler and avoids the whole compatibility surface.
+Please also:
+
+Actually run next build in the exact artifacts/proof-of-launch working directory against the committed state before claiming it passes. If it's passing locally but failing on Vercel again, the verification environment is genuinely diverging from Vercel's and we need to understand why — but first let's just see if this fix lands clean.
+If the build passes locally this time, commit + push via the Git pane and let me know.
+
+Go.
