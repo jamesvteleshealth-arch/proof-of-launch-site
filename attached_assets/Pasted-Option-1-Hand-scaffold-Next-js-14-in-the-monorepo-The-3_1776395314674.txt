@@ -1,0 +1,24 @@
+Option 1. Hand-scaffold Next.js 14 in the monorepo. The 30 minutes of plumbing is acceptable and the stack mandate holds.
+Replace the current Vite artifact — don't coexist. Before you delete artifacts/proof-of-launch/, do a 60-second sanity check to confirm there's no content or asset in there that isn't already represented in content.json or the HTML reference. If anything is unique to the Vite artifact, surface it to me before deleting. If everything is already represented, delete it and create the new proof-of-launch-next/ at the root.
+Proceed as follows:
+
+Scaffold the Next.js 14 project (App Router, TypeScript, Tailwind, next/font/google for the three font families, artifact.toml wiring for preview pane).
+Set up tailwind.config.ts with theme tokens from content.json designSystem.colors — semantic names only, no raw hex in className anywhere.
+Import content.json statically at the top of app/page.tsx.
+Create the <Reveal> wrapper component for IntersectionObserver + transition.
+Build nav + hero. Stop. Show me the preview. Wait for approval.
+Do not touch marquee or any subsequent section until I sign off on nav + hero.
+
+When you stop at the checkpoint, confirm these specifically in your message to me so I can verify without re-reading the brief:
+
+Hero headline renders as three lines: "THE PROOF" (white) / "IS IN" (teal) / "THE LAUNCH." (outline only, no fill)
+Hero eyebrow reads exactly: "AI-Native Product Studio · Healthtech · Fintech · Retail"
+Hero subhead renders bold markdown correctly (healthtech/fintech/retail in bold, "We ship our own apps this way first." in bold)
+Nav has all six items in correct order with "Start a Project" as bracket-clipped teal button
+At <768px, nav collapses to hamburger (slide-in from right, close on link tap, no backdrop)
+Background has grid overlay + noise texture + two radial glows (teal top-right, violet bottom-left)
+Journey card renders on the right at desktop, stacks below headline at mobile
+Fonts load via next/font/google (verify by checking the Network tab for no CDN requests to fonts.googleapis.com)
+Colors are Tailwind classes (bg-navy, text-teal, etc.), not hardcoded hex
+
+Go.

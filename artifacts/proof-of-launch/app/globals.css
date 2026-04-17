@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  background-color: #05080f;
+  color: #eff6ff;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-body), "DM Sans", system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(0, 212, 170, 0.25);
+  color: #eff6ff;
+}
+
+/* Subtle grid + noise overlay for the page background */
+.bg-page-overlay {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 212, 170, 0.02) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(0, 212, 170, 0.02) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Hexagonal logo mark */
+.hex-clip {
+  clip-path: polygon(
+    25% 5%,
+    75% 5%,
+    100% 50%,
+    75% 95%,
+    25% 95%,
+    0% 50%
+  );
+}
+
+/* Bracket-shaped CTA button */
+.bracket-clip {
+  clip-path: polygon(
+    8% 0%,
+    100% 0%,
+    92% 100%,
+    0% 100%
+  );
+}
+
+/* Reveal base state (pre-intersection) */
+.reveal-init {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+.reveal-in {
+  animation: reveal-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes reveal-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+  }
+  .reveal-in {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

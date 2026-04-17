@@ -17,15 +17,5 @@ localPort = 19350
 [services.development]
 run = "pnpm --filter @workspace/proof-of-launch run dev"
 
-[services.production]
-build = [ "pnpm", "--filter", "@workspace/proof-of-launch", "run", "build" ]
-publicDir = "artifacts/proof-of-launch/dist/public"
-serve = "static"
-
-[[services.production.rewrites]]
-from = "/*"
-to = "/index.html"
-
 [services.env]
 PORT = "19350"
-BASE_PATH = "/"
