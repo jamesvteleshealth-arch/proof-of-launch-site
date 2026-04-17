@@ -1,0 +1,18 @@
+Decision: Path A. Scaffold a new Next.js 14 App Router project. The SEO story matters long-term and the brief's stack mandate stands. The extra setup is acceptable.
+Answers to your 7 questions:
+
+Stack — Path A. Next.js 14 App Router, Tailwind CSS (with theme tokens from content.json designSystem), next/font/google for Barlow Condensed / DM Sans / DM Mono, deploy target Vercel.
+Form delivery. Wire the contact form to a Next.js server action. Stub the actual email send for now — render the success state, log the form payload to console, leave a clear TODO: wire RESEND_API_KEY comment. I'll add the Resend integration post-scaffold with a real key. Destination email: placeholder hello@proofoflaunch.com for now.
+Calendly URLs. Placeholders. Render them as # with a "Coming soon" label in muted styling. Don't hardcode the placeholder URLs from content.json as if they're live.
+Analytics. Skip for v1. I'll add Plausible post-deploy with a script tag.
+Mobile menu. Hamburger slide-in from the right at <768px, close on link tap, no backdrop. Confirmed.
+Tailwind. Yes, Tailwind with theme tokens. Map every color from content.json designSystem.colors into tailwind.config.ts theme.extend.colors with semantic names (teal, teal-dim, amber, violet, navy, etc.). Never hardcode hex in className.
+Portfolio anonymization. Render "Sister company · Anonymized" verbatim in the bottom-right of each card. It's deliberate — credibility comes from naming it plainly, not hiding it.
+OG image / favicon. Generate placeholders: hexagonal POL mark on dark navy (#05080F) with teal (#00D4AA) fill for favicon; OG image 1200×630 with the tagline "The proof is in the launch." on dark navy with teal accent. Production versions will replace later.
+
+Additional directive not in your questions:
+
+Import content.json statically at build time (import content from '@/content/content.json'). Do not fetch it at runtime. This keeps the site fast and any copy change becomes a deploy.
+
+Your proposed component structure is approved with one addition: the component folder structure is good. I'd also like a <Reveal> wrapper component that handles the IntersectionObserver + transition logic, so any element can be wrapped in <Reveal>...</Reveal> to get the scroll-in animation without boilerplate.
+Go. Build section-by-section in the order I specified. Stop after nav + hero for first checkpoint. Don't move to marquee until I approve what you have.
