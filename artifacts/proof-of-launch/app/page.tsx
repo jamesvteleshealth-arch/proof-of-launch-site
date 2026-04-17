@@ -3,6 +3,8 @@ import { Marquee } from "@/components/Marquee";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TracksSection } from "@/components/sections/TracksSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
+import { LaunchOpsSection } from "@/components/sections/LaunchOpsSection";
+import { StudioSection } from "@/components/sections/StudioSection";
 import content from "@/content/content.json";
 
 export default function HomePage() {
@@ -20,6 +22,8 @@ export default function HomePage() {
       />
       <TracksSection tracksSection={content.tracksSection} />
       <PortfolioSection portfolio={content.portfolio} />
+      <LaunchOpsSection launchOpsSection={content.launchOpsSection} />
+      <StudioSection studioSection={content.studioSection} />
     </main>
   );
 }
