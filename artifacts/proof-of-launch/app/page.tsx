@@ -5,6 +5,7 @@ import { TracksSection } from "@/components/sections/TracksSection";
 import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import { LaunchOpsSection } from "@/components/sections/LaunchOpsSection";
 import { StudioSection } from "@/components/sections/StudioSection";
+import { DevicesSection } from "@/components/sections/DevicesSection";
 import content from "@/content/content.json";
 
 export default function HomePage() {
@@ -24,6 +25,7 @@ export default function HomePage() {
       <PortfolioSection portfolio={content.portfolio} />
       <LaunchOpsSection launchOpsSection={content.launchOpsSection} />
       <StudioSection studioSection={content.studioSection} />
+      <DevicesSection devicesSection={content.devicesSection} />
     </main>
   );
 }
