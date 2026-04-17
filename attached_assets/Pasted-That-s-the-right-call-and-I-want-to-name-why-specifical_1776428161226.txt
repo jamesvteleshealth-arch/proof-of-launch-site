@@ -1,0 +1,44 @@
+That's the right call, and I want to name why specifically because it's a sharper decision than it might feel.
+
+Why the switch is correct
+You're re-ordering by the sequence buyers will actually experience.
+The current order (Studio first, LaunchOps second) implies a narrative: "We build apps, and we also QA them." That framing makes Studio the hero product and LaunchOps the supporting act. It made sense when you were thinking about this as a dev studio that happens to have QA capability.
+The switch to LaunchOps first, Studio second implies a different narrative: "We prove AI-built apps are ready to ship — and we also build them when that's what you need." LaunchOps becomes the hero, Studio becomes the expansion. This matches three things better than the current order:
+1. It matches where your market window actually is. The vibe-coder QA specialist lane is the one with the Apple App Store tailwind, the documented pain, the competitive opening, and the fastest sales cycle. The Studio is where Studio operators live; LaunchOps is where the market is urgently buying right now. Leading with LaunchOps is leading with the thing prospects will actually search for.
+2. It matches your primary sales strategy. You told me earlier you want to lead with LaunchOps and add Studio as a capability. The site should express that hierarchy. Track 1 = the lead product. Track 2 = the expansion product. Putting LaunchOps as Track 1 aligns the site to the business strategy instead of contradicting it.
+3. It matches buyer urgency. A prospect landing on your homepage has two possible mental states: "I have something broken and I need help fast" (LaunchOps urgency) or "I'm thinking about starting a project" (Studio patience). The urgent buyer needs to see their lane first, because urgency doesn't scroll past irrelevance to find what it needs. Patient buyers will find Studio whether it's listed first or second.
+
+What this means practically
+The switch is straightforward but it touches more than just the pillars section. Specifically:
+Tracks section: LaunchOps card becomes Track One (teal), Studio card becomes Track Two (violet). The "One Studio. Two Tracks." headline still works — arguably better, because now "Studio" in the headline refers to Proof of Launch as a studio, not to the Studio track specifically.
+Hero journey card: The current four steps are Discovery → Studio → LaunchOps → Proven live. This stays the same — the journey is about how a client flows through the company, not about track numbering. LaunchOps being "Track One" doesn't mean it comes first chronologically for every client. Don't let Replit "fix" this.
+Nav order: Current is Tracks / Portfolio / Studio / LaunchOps / Device Lab. Should become Tracks / Portfolio / LaunchOps / Studio / Device Lab. Small but important.
+Footer links: Same reorder.
+Contact form situation options: The current order lists Studio situations first. Reorder to LaunchOps situations first: "App is built — need QA before launch" should be the first option, not "I have an idea — need it built."
+Section order on the page: This is the bigger question. Currently the page flow is Hero → Marquee → Tracks → Portfolio → Studio section → LaunchOps section → Device Lab → Contact. You should also flip the Studio and LaunchOps sections themselves so LaunchOps tier cards appear before Studio tier cards. Track numbering that says "LaunchOps is Track One" but then shows Studio tiers first would be confusing.
+content.json: The tracksSection.tracks array is ordered Studio first, LaunchOps second. This needs to flip. The studioSection and launchOpsSection are keyed separately so they don't need renaming, but the order they're composed into page.tsx needs to flip.
+
+What to send Replit
+Copy-paste this:
+
+Before we proceed to portfolio, one structural change. I want to switch the track numbering:
+
+LaunchOps becomes Track One (teal, first position in the tracks section)
+Studio becomes Track Two (violet, second position in the tracks section)
+
+This reflects the actual business hierarchy — LaunchOps is the lead product, Studio is the expansion. The current Studio-first ordering implies the wrong narrative.
+Specific changes needed:
+
+content.json tracksSection.tracks array: Reorder so LaunchOps is first, Studio second. Update the number field on each: LaunchOps becomes "TRACK ONE", Studio becomes "TRACK TWO".
+Nav: Reorder links to Tracks / Portfolio / LaunchOps / Studio / Device Lab / Start a Project.
+Footer: Same reorder.
+Contact form situation options: Move the LaunchOps situations ("App is built — need QA," "App was rejected," "Shipping weekly — need ongoing QA") to appear before the Studio situations ("I have an idea — need it built," "App is half-built").
+Section order on the page: Flip so LaunchOps section appears before Studio section. New order: Hero → Marquee → Tracks → Portfolio → LaunchOps section → Studio section → Device Lab → Contact.
+
+Do NOT change:
+
+The hero journey card. Its four steps (Discovery → Studio → LaunchOps → Proven live) describe a client's flow through the company, not track numbering. Studio appearing as step 02 there is intentional and stays.
+The section IDs (#studio, #launchops) — the slugs are fine. Only the ordering changes.
+The "One Studio. Two Tracks." headline. It still works — "Studio" there refers to the company, not the Studio track.
+
+Make these changes, show me the updated tracks section and nav, then proceed to portfolio once I confirm.

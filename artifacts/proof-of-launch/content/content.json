@@ -59,8 +59,8 @@
     "links": [
       { "label": "Tracks",    "href": "#tracks" },
       { "label": "Portfolio", "href": "#portfolio" },
-      { "label": "Studio",    "href": "#studio" },
       { "label": "LaunchOps", "href": "#launchops" },
+      { "label": "Studio",    "href": "#studio" },
       { "label": "Device Lab","href": "#devices" }
     ],
     "cta": { "label": "Start a Project", "href": "#contact" }
@@ -135,26 +135,8 @@
     "subhead": "We built our own apps across healthtech, retail, and finance — used daily in production. Now we productize the same discipline for clients. Come to us with a raw idea, or an app that's already built. Either way, you leave with something proven.",
     "tracks": [
       {
-        "id": "studio",
-        "number": "TRACK ONE",
-        "name": "Studio",
-        "color": "violet",
-        "icon": "🏗️",
-        "bgText": "STUDIO",
-        "tagline": "You need an app built. We validate, scope, and build — AI-accelerated for speed, engineer-owned for reliability. Every Studio build ships through LaunchOps QA. Priced flat. Scoped tight.",
-        "features": [
-          "Discovery call with James — free, no deck",
-          "Healthtech, fintech, or retail focus",
-          "AI tools where they accelerate — Replit, Lovable, Cursor, Bolt, v0",
-          "Engineers write infrastructure and critical logic from scratch",
-          "LaunchOps QA bundled in every tier",
-          "Flat pricing from $2,999 · phased billing"
-        ],
-        "cta": { "label": "See Studio Tiers →", "href": "#studio" }
-      },
-      {
         "id": "launchops",
-        "number": "TRACK TWO",
+        "number": "TRACK ONE",
         "name": "LaunchOps",
         "color": "teal",
         "icon": "🔬",
@@ -169,6 +151,24 @@
           "Rejection Recovery for rejected App Store submissions"
         ],
         "cta": { "label": "See LaunchOps Tiers →", "href": "#launchops" }
+      },
+      {
+        "id": "studio",
+        "number": "TRACK TWO",
+        "name": "Studio",
+        "color": "violet",
+        "icon": "🏗️",
+        "bgText": "STUDIO",
+        "tagline": "You need an app built. We validate, scope, and build — AI-accelerated for speed, engineer-owned for reliability. Every Studio build ships through LaunchOps QA. Priced flat. Scoped tight.",
+        "features": [
+          "Discovery call with James — free, no deck",
+          "Healthtech, fintech, or retail focus",
+          "AI tools where they accelerate — Replit, Lovable, Cursor, Bolt, v0",
+          "Engineers write infrastructure and critical logic from scratch",
+          "LaunchOps QA bundled in every tier",
+          "Flat pricing from $2,999 · phased billing"
+        ],
+        "cta": { "label": "See Studio Tiers →", "href": "#studio" }
       }
     ]
   },
