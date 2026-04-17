@@ -121,6 +121,7 @@
       "Retail · Field-Tested",
       "Replit · Lovable · Cursor · Bolt · v0",
       "Real Device Lab",
+      "Human in the Loop · Always",
       "AWS · GCP · Azure · DigitalOcean",
       "App Store Compliance",
       "Engineering From Scratch",
@@ -347,8 +348,8 @@
     },
     "philosophy": {
       "eyebrow": "Our philosophy",
-      "headline": "Speed from AI. Trust from engineers.",
-      "text": "We use vibe coding and AI tools where they genuinely accelerate — UI scaffolding, rapid prototyping, iteration. Our engineers write infrastructure, deployment pipelines, and business-critical logic from scratch. Every build is AI-accelerated and human-owned."
+      "headline": "AI-accelerated. Human in the loop. Always.",
+      "text": "We use vibe coding and AI tools where they genuinely accelerate — UI scaffolding, rapid prototyping, iteration. A human engineer reviews, hardens, and signs off on every line that ships. Every build is AI-accelerated and human-owned. No output reaches production without review."
     }
   },
 

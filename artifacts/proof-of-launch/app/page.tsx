@@ -2,6 +2,7 @@ import { Nav } from "@/components/Nav";
 import { Marquee } from "@/components/Marquee";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { TracksSection } from "@/components/sections/TracksSection";
+import { PortfolioSection } from "@/components/sections/PortfolioSection";
 import content from "@/content/content.json";
 
 export default function HomePage() {
@@ -18,6 +19,7 @@ export default function HomePage() {
         animationSpeed={content.marquee.animationSpeed}
       />
       <TracksSection tracksSection={content.tracksSection} />
+      <PortfolioSection portfolio={content.portfolio} />
     </main>
   );
 }
