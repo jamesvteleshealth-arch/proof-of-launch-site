@@ -6,7 +6,7 @@ type DevicePriority = "critical" | "high" | "medium";
 type Device = {
   name: string;
   os: string;
-  priority: DevicePriority;
+  priority: string;
   icon: string;
 };
 
@@ -110,7 +110,9 @@ export function DevicesSection({ devicesSection }: DevicesSectionProps) {
 
             <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {devices.map((device, i) => {
-                const priority = PRIORITY[device.priority];
+                const priority =
+                  PRIORITY[(device.priority as DevicePriority)] ??
+                  PRIORITY.medium;
                 return (
                   <Reveal
                     as="article"

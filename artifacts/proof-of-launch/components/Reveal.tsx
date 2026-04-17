@@ -1,13 +1,19 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useState,
+  type ElementType,
+  type ReactNode,
+} from "react";
 import { cn } from "@/lib/cn";
 
 type RevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
 };
 
 export function Reveal({
@@ -47,18 +53,13 @@ export function Reveal({
     return () => observer.disconnect();
   }, []);
 
-  const Component = Tag as keyof JSX.IntrinsicElements;
+  const Component = Tag as ElementType;
 
   return (
-    // @ts-expect-error — dynamic intrinsic tag
     <Component
       ref={ref}
       style={{ animationDelay: visible ? `${delay}ms` : undefined }}
-      className={cn(
-        "reveal-init",
-        visible && "reveal-in",
-        className,
-      )}
+      className={cn("reveal-init", visible && "reveal-in", className)}
     >
       {children}
     </Component>

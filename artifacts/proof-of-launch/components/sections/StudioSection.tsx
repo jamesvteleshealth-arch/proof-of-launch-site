@@ -25,7 +25,8 @@ type StudioTier = {
   includedQa?: { label: string; value: number };
 };
 
-type Tool = { name: string; style: "default" | "highlight-teal" | "highlight-amber" };
+type ToolStyle = "default" | "highlight-teal" | "highlight-amber";
+type Tool = { name: string; style: string };
 
 type StudioSectionProps = {
   studioSection: {
@@ -45,7 +46,7 @@ const PHASE_COLOR: Record<string, { text: string; border: string }> = {
   teal: { text: "text-teal", border: "border-teal/40" },
 };
 
-const TOOL_STYLE: Record<Tool["style"], string> = {
+const TOOL_STYLE: Record<ToolStyle, string> = {
   default:
     "border-border-visible bg-navy-800/60 text-ink/80",
   "highlight-teal":
@@ -159,7 +160,8 @@ export function StudioSection({ studioSection }: StudioSectionProps) {
                 key={tool.name}
                 className={cn(
                   "rounded-sm border px-3 py-1.5 font-mono text-[11px] uppercase tracking-eyebrow",
-                  TOOL_STYLE[tool.style],
+                  TOOL_STYLE[(tool.style as ToolStyle) ?? "default"] ??
+                    TOOL_STYLE.default,
                 )}
               >
                 {tool.name}
