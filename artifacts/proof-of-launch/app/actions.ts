@@ -12,7 +12,6 @@ export type ContactPayload = {
 export type ContactResult = { ok: boolean; error?: string };
 
 export async function submitContact(
-  _prev: ContactResult | null,
   formData: FormData,
 ): Promise<ContactResult> {
   const payload: ContactPayload = {

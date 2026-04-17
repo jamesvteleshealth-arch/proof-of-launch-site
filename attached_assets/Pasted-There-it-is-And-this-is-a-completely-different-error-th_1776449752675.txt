@@ -1,0 +1,72 @@
+There it is. And this is a completely different error than the first one — which is both good news and a correction to my earlier prediction.
+
+What the error actually says
+./components/ContactForm.tsx:3:10
+Type error: Module '"react-dom"' has no exported member 'useFormState'.
+Plain English: Replit's ContactForm.tsx imports useFormState and useFormStatus from "react-dom". But useFormState doesn't exist at that import path — not in the version of React/Next.js you're using, not anywhere.
+This is not another variant-type narrowing issue. My audit push was off-target. This is a completely different kind of mistake: Replit used an API that doesn't exist in your dependency versions.
+
+Why this happened
+This is actually a common AI agent failure mode worth understanding:
+
+useFormState was a React hook that existed briefly during the React 19 canary/experimental phase
+When React 19 shipped stable, useFormState was renamed to useActionState and moved from react-dom to react
+Next.js 14.2.x (your version) is built against React 18.3.x, which has neither hook — because they're both React 19 features
+
+So Replit wrote the ContactForm using a React 19 pattern that doesn't work in React 18, and neither local dev nor their verification caught it because... well, actually it should have been caught locally. Which is the separate concern I'll address below.
+The fix is straightforward: rewrite the form submission with the useState + async/await pattern that works in React 18, or use a simple form action attribute with the server action directly.
+
+What to send Replit
+Copy-paste this:
+
+Vercel build failed again — but this is a completely different error. Not a TypeScript narrowing issue. It's an API availability issue in ContactForm.tsx:
+./components/ContactForm.tsx:3:10
+Type error: Module '"react-dom"' has no exported member 'useFormState'.
+
+> 3 | import { useFormState, useFormStatus } from "react-dom";
+    |          ^
+Root cause: You used useFormState and useFormStatus from "react-dom", but these are React 19 hooks (actually, useFormState was renamed to useActionState and moved to "react" in stable React 19). This project is on Next.js 14.2.18 + React 18.3.1, which has neither hook available.
+Fix the ContactForm with a React 18-compatible pattern. Two good options:
+Option A (recommended — simplest, most reliable): Use useState + useTransition + direct server action invocation:
+tsx"use client";
+import { useState, useTransition } from "react";
+import { submitContact, type ContactResult } from "@/app/actions";
+import { cn } from "@/lib/cn";
+
+export function ContactForm() {
+  const [result, setResult] = useState<ContactResult | null>(null);
+  const [isPending, startTransition] = useTransition();
+
+  async function handleSubmit(formData: FormData) {
+    startTransition(async () => {
+      const res = await submitContact(formData);
+      setResult(res);
+    });
+  }
+
+  return (
+    <form action={handleSubmit}>
+      {/* ... form fields ... */}
+      <button
+        type="submit"
+        disabled={isPending}
+        className={cn(
+          "...",
+          result?.success && "bg-teal-dim"
+        )}
+      >
+        {result?.success ? "✓ Received — We'll be in touch within 24 hours" : "Send — We'll Respond Within 24 Hours →"}
+      </button>
+    </form>
+  );
+}
+This uses the action={fn} prop on <form> (a stable React 18 + Next.js 14 feature) and tracks pending/success state with useTransition + useState.
+Option B (if you need progressive enhancement): Use a traditional onSubmit handler, manually call the server action, manage state with useState. Slightly more boilerplate but works on every React version.
+Before you push the fix, I also need you to answer this:
+You told me in your last message the build was "verified clean with tsc --noEmit (no output) and a full next build." But Vercel is failing on the exact command you said you ran locally. This is the second time this gap has occurred. Please tell me:
+
+What exactly did you run locally?
+Did it actually produce a "Compiled successfully" output followed by a route table with all four routes prerendered?
+If yes — what's the difference between your local environment and Vercel's that would let a missing export slip through locally but fail in Vercel?
+
+Don't push another fix until you can answer that question honestly. I'd rather wait 10 minutes for a real local next build than do a fifth failed Vercel deploy. Each failure costs us trust and time.

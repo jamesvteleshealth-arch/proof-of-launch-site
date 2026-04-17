@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useState, useTransition } from "react";
 import { submitContact, type ContactResult } from "@/app/actions";
 import { cn } from "@/lib/cn";
 
@@ -22,44 +22,25 @@ type FormConfig = {
   disclaimer: string;
 };
 
-function SubmitButton({
-  label,
-  success,
-  successMessage,
-}: {
-  label: string;
-  success: boolean;
-  successMessage: string;
-}) {
-  const { pending } = useFormStatus();
-  return (
-    <button
-      type="submit"
-      disabled={pending || success}
-      className={cn(
-        "mt-2 w-full rounded-md px-6 py-4 font-mono text-[12px] font-bold uppercase tracking-eyebrow transition-colors",
-        success
-          ? "cursor-default bg-teal-dim text-navy-900"
-          : "bg-teal text-navy-900 hover:bg-teal-bright disabled:opacity-60",
-      )}
-    >
-      {success ? successMessage : pending ? "Sending…" : label}
-    </button>
-  );
-}
-
 const fieldClass =
   "w-full rounded-sm border border-border-visible bg-navy-900/60 px-4 py-3 font-body text-[14px] text-ink placeholder:text-muted focus:border-teal focus:outline-none focus:ring-1 focus:ring-teal";
 const labelClass =
   "mb-2 block font-mono text-[10.5px] uppercase tracking-eyebrow text-muted-2";
 
 export function ContactForm({ form }: { form: FormConfig }) {
-  const initial: ContactResult | null = null;
-  const [state, formAction] = useFormState(submitContact, initial);
-  const success = !!state?.ok;
+  const [result, setResult] = useState<ContactResult | null>(null);
+  const [isPending, startTransition] = useTransition();
+  const success = !!result?.ok;
+
+  function handleAction(formData: FormData) {
+    startTransition(async () => {
+      const res = await submitContact(formData);
+      setResult(res);
+    });
+  }
 
   return (
-    <form action={formAction} className="space-y-5">
+    <form action={handleAction} className="space-y-5">
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {form.fields.map((field) => (
           <div key={field.id}>
@@ -156,17 +137,28 @@ export function ContactForm({ form }: { form: FormConfig }) {
         />
       </div>
 
-      {state?.error && !success && (
+      {result?.error && !success && (
         <p className="font-mono text-[11px] uppercase tracking-eyebrow text-critical">
-          {state.error}
+          {result.error}
         </p>
       )}
 
-      <SubmitButton
-        label={form.submitLabel}
-        success={success}
-        successMessage={form.successMessage}
-      />
+      <button
+        type="submit"
+        disabled={isPending || success}
+        className={cn(
+          "mt-2 w-full rounded-md px-6 py-4 font-mono text-[12px] font-bold uppercase tracking-eyebrow transition-colors",
+          success
+            ? "cursor-default bg-teal-dim text-navy-900"
+            : "bg-teal text-navy-900 hover:bg-teal-bright disabled:opacity-60",
+        )}
+      >
+        {success
+          ? form.successMessage
+          : isPending
+            ? "Sending…"
+            : form.submitLabel}
+      </button>
 
       <p className="text-[12px] leading-relaxed text-muted">
         {form.disclaimer}
