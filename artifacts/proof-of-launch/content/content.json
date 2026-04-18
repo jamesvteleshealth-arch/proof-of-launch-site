@@ -396,8 +396,52 @@
         "turnaround": "⏱ 48-hour turnaround"
       },
       {
-        "id": "launch-ready",
+        "id": "production-setup",
         "number": "QA Tier 03",
+        "name": "Production Setup",
+        "forWhom": "Built on Lovable/Replit? We'll host it for real.",
+        "price": 1299,
+        "priceDisplay": "$1,299",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "badge": { "label": "Vibe Coder", "color": "amber" },
+        "features": [
+          "Production deployment (AWS, Vercel, Railway — we configure)",
+          "Custom domain + SSL certificates",
+          "CDN + performance baseline",
+          "Database separation + environment variables",
+          "Monitoring, uptime alerts, error tracking",
+          "Automated backups",
+          "Written production readiness verdict",
+          "Full account handoff with documentation"
+        ],
+        "turnaround": "⏱ 3-day turnaround"
+      },
+      {
+        "id": "store-setup",
+        "number": "QA Tier 04",
+        "name": "Store Setup",
+        "forWhom": "From vibe-coded to App Store / Play Store",
+        "price": 999,
+        "priceDisplay": "$999",
+        "priceNote": "FLAT · ONE TIME",
+        "featured": false,
+        "badge": { "label": "New", "color": "teal" },
+        "features": [
+          "Apple Developer Program setup (your name, your ownership)",
+          "Google Play Console setup (your name, your ownership)",
+          "D-U-N-S registration if business verification needed",
+          "Bundle ID and signing key strategy",
+          "Privacy declarations, data safety, content ratings",
+          "Screenshots at all required device resolutions",
+          "TestFlight and Play Console internal testing",
+          "Delegated admin access + written handoff"
+        ],
+        "turnaround": "⏱ 5-day turnaround"
+      },
+      {
+        "id": "launch-ready",
+        "number": "QA Tier 05",
         "name": "Launch Ready",
         "forWhom": "First real release",
         "price": 1499,
@@ -418,7 +462,7 @@
       },
       {
         "id": "compliance-launch",
-        "number": "QA Tier 04",
+        "number": "QA Tier 06",
         "name": "Compliance Launch",
         "forWhom": "Healthcare & Fintech apps",
         "price": 3499,
@@ -439,7 +483,7 @@
       },
       {
         "id": "retainer",
-        "number": "QA Tier 05",
+        "number": "QA Tier 07",
         "name": "Retainer",
         "forWhom": "Teams shipping weekly",
         "price": 3900,
@@ -493,14 +537,14 @@
   "devicesSection": {
     "eyebrow": "Real Device Lab",
     "headline": "Real Hardware. Real Conditions.\nReal Regulated Scenarios.",
-    "subhead": "Simulators don't fail the way real devices fail. We test on the specific hardware your users actually run — clinical tablets in hospital Wi-Fi conditions, POS terminals during retail peak hours, offline-capable scanners with spotty connectivity. These are the conditions your app has to survive in. This is where launches actually break.",
+    "subhead": "Simulators don't fail the way real devices fail. We test on the specific hardware your users actually run — clinical tablets in hospital Wi-Fi conditions, POS terminals during retail peak hours, offline-capable scanners with spotty connectivity. These are the conditions your app has to survive. This is where launches actually break.",
     "failureModes": [
       { "icon": "📷", "title": "Camera permissions after app restart", "description": "Permission state changes between sessions — simulators never replicate this." },
       { "icon": "☀️", "title": "Outdoor sunlight readability",         "description": "Clinical and field apps must be readable in direct sunlight. We test there." },
       { "icon": "📶", "title": "Offline sync and reconnect cycles",    "description": "Data entered offline → airplane mode off → sync verified in database." },
       { "icon": "📹", "title": "WebRTC video device-to-device",        "description": "Video call quality on actual mobile hardware — not a desktop Chrome tab." }
     ],
-    "fleetLabel": "Our Device Fleet — Real Hardware, Real Conditions",
+    "fleetLabel": "Our Device Fleet — Real Hardware. Real Conditions. Real Regulated Scenarios.",
     "devices": [
       { "name": "Samsung Galaxy Tab A", "os": "Android 13 · PWA workflows",    "priority": "critical", "icon": "📱" },
       { "name": "Samsung Galaxy S",     "os": "Android 13 · Consumer apps",    "priority": "critical", "icon": "📱" },
@@ -530,12 +574,14 @@
         { "id": "email", "label": "Email",     "type": "email", "placeholder": "jane@yourapp.com", "required": true }
       ],
       "situationOptions": [
-        "I have an idea — need it built (Studio)",
-        "App is half-built — need help finishing (Studio or Finish Line)",
-        "App is built — need QA before launch (LaunchOps)",
+        "App is built on Lovable/Replit/Bolt — need to host and publish it (LaunchOps Production + Store Setup)",
+        "App is built — need QA before launch (LaunchOps Launch Ready)",
+        "App is half-built — need help finishing (Finish Line)",
         "App was rejected by App Store / Play Store (Rejection Recovery)",
+        "Healthtech or fintech app — need compliance review (Compliance Launch)",
         "Shipping weekly — need ongoing QA (LaunchOps Retainer)",
-        "Not sure yet — let's talk"
+        "I have an idea — need it built (Studio)",
+        "Something else — let's talk"
       ],
       "verticalOptions": [
         "Healthtech",
