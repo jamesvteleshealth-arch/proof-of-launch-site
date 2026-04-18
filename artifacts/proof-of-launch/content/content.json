@@ -536,7 +536,7 @@
 
   "devicesSection": {
     "eyebrow": "Real Device Lab",
-    "headline": "Real Hardware. Real Conditions.\nReal Regulated Scenarios.",
+    "headline": "What Simulators\nWon't Catch.",
     "subhead": "Simulators don't fail the way real devices fail. We test on the specific hardware your users actually run — clinical tablets in hospital Wi-Fi conditions, POS terminals during retail peak hours, offline-capable scanners with spotty connectivity. These are the conditions your app has to survive. This is where launches actually break.",
     "failureModes": [
       { "icon": "📷", "title": "Camera permissions after app restart", "description": "Permission state changes between sessions — simulators never replicate this." },
