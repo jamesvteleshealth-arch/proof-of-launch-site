@@ -75,7 +75,7 @@
         { "text": "THE LAUNCH.","style": "outline-only" }
       ]
     },
-    "subhead": "Proof of Launch is an AI-native product studio for **healthtech, fintech, and retail** — industries where launching wrong becomes a compliance event, not just a bad review. We build fast with AI. We prove every launch on real devices. **We ship our own apps this way first.**",
+    "subhead": "Proof of Launch is an AI-native product studio for **healthtech, fintech, and retail** — the only industries we serve, because a bad launch in these verticals is a compliance event, not a bad review. We've shipped apps in each vertical ourselves. Now we ship them for you.",
     "primaryCta":   { "label": "Start a Project",     "href": "#contact" },
     "secondaryCta": { "label": "See Our Two Tracks ↓","href": "#tracks" },
     "journeyCard": {
@@ -492,8 +492,8 @@
 
   "devicesSection": {
     "eyebrow": "Real Device Lab",
-    "headline": "What Simulators\nWon't Catch.",
-    "subhead": "Touch target failures. Camera permission bugs after restart. Offline sync breaking on iOS PWA. Screens washed out in sunlight. These only appear on real hardware — and they're exactly the failures that become clinical incidents, compliance events, or lost retail sales. Our device lab tests every LaunchOps engagement on actual phones and tablets.",
+    "headline": "Real Hardware. Real Conditions.\nReal Regulated Scenarios.",
+    "subhead": "Simulators don't fail the way real devices fail. We test on the specific hardware your users actually run — clinical tablets in hospital Wi-Fi conditions, POS terminals during retail peak hours, offline-capable scanners with spotty connectivity. These are the conditions your app has to survive in. This is where launches actually break.",
     "failureModes": [
       { "icon": "📷", "title": "Camera permissions after app restart", "description": "Permission state changes between sessions — simulators never replicate this." },
       { "icon": "☀️", "title": "Outdoor sunlight readability",         "description": "Clinical and field apps must be readable in direct sunlight. We test there." },
