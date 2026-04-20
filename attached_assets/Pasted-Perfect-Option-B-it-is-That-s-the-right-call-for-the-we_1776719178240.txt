@@ -1,0 +1,51 @@
+Perfect — Option B it is. That's the right call for the website. Here's the final combined Replit message, ready to paste:
+
+Combined Replit message — four content updates
+Four content updates to content.json. All language-only edits, no structural changes. No code changes, no component changes.
+
+Update 1 — Scrub all "Manila" references, reframe as US-based with global delivery
+Do a global search of content.json for "Manila" — flag every instance. The known occurrence is in contactSection.facts. Please also check for any additional references in:
+
+devicesSection (fleet label, intro, device metadata)
+Portfolio section descriptions
+Footer content
+Tracks section
+Any FAQ or secondary content
+
+For the known contactSection.facts entry:
+Current:
+json{ "icon": "🌏", "text": "Global team · **ops hub in Manila**. That's how we deliver 24-hour Tier 1 turnaround." }
+Replacement:
+json{ "icon": "🌐", "text": "**US-based with global delivery**. That's how we deliver 24-hour Tier 1 turnaround at our pricing." }
+If you find additional Manila references elsewhere, propose replacement language for each and wait for confirmation before committing — we want to preserve operational honesty (global delivery team exists) while leading with US-based framing.
+
+Update 2 — Add veteran-owned fact to contact section
+In content.json → contactSection.facts, insert a new entry. Suggested placement: after the existing "Healthtech, fintech, retail" fact and before the "US-based with global delivery" fact.
+json{ "icon": "🎖️", "text": "**Veteran-owned**. Founder's US military background in IT infrastructure, cybersecurity, and electronic warfare brings operational discipline to every engagement." }
+If the 🎖️ emoji doesn't render consistently across platforms, substitute with 🇺🇸 or ⭐. Text content is what matters.
+
+Update 3 — Device Lab failure modes (expanded descriptions for non-technical readers)
+In content.json → devicesSection.failureModes, keep the icons and titles, replace each description field with:
+Item 1 — Camera Permissions After App Restart:
+"When a user closes your app and reopens it, the camera permission sometimes reverts to 'denied' on certain phones. Your app keeps trying to open the camera, fails silently, and the user thinks the whole app is broken. Simulators never show this — only real phones do."
+Item 2 — Outdoor Sunlight Readability:
+"Clinical staff in ER parking lots. Delivery drivers at loading docks. Field reps at a customer site. If your app turns into a washed-out rectangle in bright light, the people using it can't work. We physically take devices outside and make sure your screens are readable — because this never shows up in an office-tested demo."
+Item 3 — Offline Sync and Reconnect Cycles:
+"A field worker enters 20 patient records in an area with no signal. Later, back at the office, the phone reconnects. Did all 20 records actually sync to your database? Or did three get lost silently? This is one of the most common ways AI-generated apps quietly lose real user data. We test the full offline → reconnect → database-verification cycle to make sure nothing disappears."
+Item 4 — WebRTC Video Device-to-Device:
+"Video calls that work perfectly during development often freeze, drop audio, or fail entirely on real phones and tablets. Developers test on desktop browsers; your users are on iPhones and Androids in elevators, parking lots, and waiting rooms. We test video calls device-to-device on actual mobile hardware to catch what desktop testing always misses."
+
+Update 4 — Contact form situation option (plain language rewrite)
+In content.json → contactSection.form.situationOptions, replace:
+"Shipping weekly — need ongoing QA (LaunchOps Retainer)"
+With:
+"App is already live — we push updates often and need help testing every release (LaunchOps Retainer)"
+
+Verification before push
+
+Run rm -rf .next && pnpm exec tsc --noEmit && pnpm exec next build locally
+Preview the homepage on both desktop and mobile before committing — the expanded Device Lab descriptions will make that section taller, verify no layout breakage
+Verify the contact facts list with the new veteran-owned bullet doesn't push the form below the fold on common laptop screens
+Confirm all Manila references are scrubbed globally (not just the one obvious location)
+
+Suggested commit message: "Content v1.2: US-based positioning + veteran-owned + accessibility pass"

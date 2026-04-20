@@ -539,10 +539,10 @@
     "headline": "What Simulators\nWon't Catch.",
     "subhead": "Simulators don't fail the way real devices fail. We test on the specific hardware your users actually run — clinical tablets in hospital Wi-Fi conditions, POS terminals during retail peak hours, offline-capable scanners with spotty connectivity. These are the conditions your app has to survive. This is where launches actually break.",
     "failureModes": [
-      { "icon": "📷", "title": "Camera permissions after app restart", "description": "Permission state changes between sessions — simulators never replicate this." },
-      { "icon": "☀️", "title": "Outdoor sunlight readability",         "description": "Clinical and field apps must be readable in direct sunlight. We test there." },
-      { "icon": "📶", "title": "Offline sync and reconnect cycles",    "description": "Data entered offline → airplane mode off → sync verified in database." },
-      { "icon": "📹", "title": "WebRTC video device-to-device",        "description": "Video call quality on actual mobile hardware — not a desktop Chrome tab." }
+      { "icon": "📷", "title": "Camera permissions after app restart", "description": "When a user closes your app and reopens it, the camera permission sometimes reverts to 'denied' on certain phones. Your app keeps trying to open the camera, fails silently, and the user thinks the whole app is broken. Simulators never show this — only real phones do." },
+      { "icon": "☀️", "title": "Outdoor sunlight readability",         "description": "Clinical staff in ER parking lots. Delivery drivers at loading docks. Field reps at a customer site. If your app turns into a washed-out rectangle in bright light, the people using it can't work. We physically take devices outside and make sure your screens are readable — because this never shows up in an office-tested demo." },
+      { "icon": "📶", "title": "Offline sync and reconnect cycles",    "description": "A field worker enters 20 patient records in an area with no signal. Later, back at the office, the phone reconnects. Did all 20 records actually sync to your database? Or did three get lost silently? This is one of the most common ways AI-generated apps quietly lose real user data. We test the full offline → reconnect → database-verification cycle to make sure nothing disappears." },
+      { "icon": "📹", "title": "WebRTC video device-to-device",        "description": "Video calls that work perfectly during development often freeze, drop audio, or fail entirely on real phones and tablets. Developers test on desktop browsers; your users are on iPhones and Androids in elevators, parking lots, and waiting rooms. We test video calls device-to-device on actual mobile hardware to catch what desktop testing always misses." }
     ],
     "fleetLabel": "Our Device Fleet — Real Hardware. Real Conditions. Real Regulated Scenarios.",
     "devices": [
@@ -564,7 +564,8 @@
       { "icon": "💡", "text": "**Discovery is free.** Short call, no deck, no commitment." },
       { "icon": "⚡", "text": "**24-hour response** on all new project inquiries." },
       { "icon": "🏥", "text": "**Healthtech, fintech, retail.** We've shipped in each." },
-      { "icon": "🌏", "text": "Global team · **ops hub in Manila**. That's how we deliver 24-hour Tier 1 turnaround." },
+      { "icon": "🎖️", "text": "**Veteran-owned**. Founder's US military background in IT infrastructure, cybersecurity, and electronic warfare brings operational discipline to every engagement." },
+      { "icon": "🌐", "text": "**US-based with global delivery**. That's how we deliver 24-hour Tier 1 turnaround at our pricing." },
       { "icon": "🔒", "text": "All projects covered by **NDA and IP agreement** from day one." },
       { "icon": "💳", "text": "**Flat-rate pricing** — no hidden fees, no hourly surprises." }
     ],
@@ -579,7 +580,7 @@
         "App is half-built — need help finishing (Finish Line)",
         "App was rejected by App Store / Play Store (Rejection Recovery)",
         "Healthtech or fintech app — need compliance review (Compliance Launch)",
-        "Shipping weekly — need ongoing QA (LaunchOps Retainer)",
+        "App is already live — we push updates often and need help testing every release (LaunchOps Retainer)",
         "I have an idea — need it built (Studio)",
         "Something else — let's talk"
       ],
