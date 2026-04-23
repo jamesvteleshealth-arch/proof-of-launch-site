@@ -1,0 +1,90 @@
+Wire the contact form server action to actually deliver emails via Resend. Environment is ready — RESEND_API_KEY is set in Vercel (Production + Preview). Don't hardcode the key anywhere; read via process.env.RESEND_API_KEY.
+Setup
+Install the Resend SDK:
+pnpm add resend
+Verify it's added to artifacts/proof-of-launch/package.json dependencies.
+What the server action needs to do
+The file is app/actions.ts (or wherever submitContact currently lives — it's a console.log stub right now). Rewrite the action to:
+
+Validate form input — keep whatever validation exists; make sure name, email, situation, vertical, platform, and message are sanitized
+Send email via Resend with these exact parameters:
+
+From: Proof of Launch <hello@send.proofoflaunch.com>
+To: info@proofoflaunch.com
+Reply-To: the prospect's submitted email (so when James hits reply, the response goes to them directly)
+Subject: Proof of Launch — New inquiry from [Name]
+Body: clean HTML with all form fields, readable in Gmail/Outlook/IONOS webmail, plus a plain-text fallback
+
+
+On success: return { success: true } as the action currently does
+On Resend API failure: log the error server-side (it'll appear in Vercel function logs), and return { success: false, error: "Email delivery failed, please contact us directly at info@proofoflaunch.com" } so the form shows an actual error state instead of a false success
+
+Suggested implementation pattern
+typescriptimport { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+export async function submitContact(formData: FormData): Promise<ContactResult> {
+  const name = formData.get('name')?.toString() ?? '';
+  const email = formData.get('email')?.toString() ?? '';
+  const situation = formData.get('situation')?.toString() ?? '';
+  const vertical = formData.get('vertical')?.toString() ?? '';
+  const platform = formData.get('platform')?.toString() ?? '';
+  const message = formData.get('message')?.toString() ?? '';
+
+  // Preserve existing validation
+
+  try {
+    const { error } = await resend.emails.send({
+      from: 'Proof of Launch <hello@send.proofoflaunch.com>',
+      to: 'info@proofoflaunch.com',
+      replyTo: email,
+      subject: `Proof of Launch — New inquiry from ${name}`,
+      html: buildHtmlBody({ name, email, situation, vertical, platform, message }),
+      text: buildTextBody({ name, email, situation, vertical, platform, message }),
+    });
+
+    if (error) {
+      console.error('Resend error:', error);
+      return {
+        success: false,
+        error: 'Email delivery failed, please contact us directly at info@proofoflaunch.com',
+      };
+    }
+
+    return { success: true };
+  } catch (err) {
+    console.error('Contact form error:', err);
+    return {
+      success: false,
+      error: 'Something went wrong, please contact us directly at info@proofoflaunch.com',
+    };
+  }
+}
+Extract buildHtmlBody and buildTextBody as helper functions so the action stays clean. HTML body should render cleanly — use simple inline styles, table-based layout is fine for email compatibility, no external CSS.
+HTML body structure
+The email should be scannable at a glance — when James opens a new inquiry, he should be able to see the prospect's name, email, vertical, and situation without scrolling. Suggested structure:
+[Header: "New inquiry from [Name]"]
+
+Name: [Name]
+Email: [Email]  (mailto link)
+Situation: [Situation]
+Vertical: [Vertical or "Not specified"]
+Platform: [Platform or "Not specified"]
+
+Message:
+[Message, preserved with line breaks]
+
+---
+Received: [timestamp in human-readable format, e.g., "Apr 23, 2026 at 3:42 PM"]
+Reply to this email to respond to [Name] directly.
+No branding imagery, no marketing flourishes. This is an internal notification email, not a customer-facing message. Clean and fast-readable.
+Verification before push
+
+Run rm -rf .next && pnpm exec tsc --noEmit && pnpm exec next build — must compile clean
+Verify the resend package is listed in package.json dependencies
+Do NOT attempt to test send locally (would require the API key in local environment) — test after push via Vercel preview deployment
+
+Commit message
+Wire contact form to Resend email delivery via hello@send.proofoflaunch.com
+Once committed, ping me — I'll push from the Git pane, verify the Vercel deployment, then test end-to-end by submitting a real form submission.
