@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Barlow_Condensed, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import content from "@/content/content.json";
+import { ChatWidget } from "@/components/ChatWidget";
 
 const barlow = Barlow_Condensed({
   subsets: ["latin"],
@@ -101,6 +102,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
         />
+        <ChatWidget />
       </body>
     </html>
   );
