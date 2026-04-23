@@ -13,7 +13,7 @@ export type ContactPayload = {
 
 export type ContactResult = { ok: boolean; error?: string };
 
-const FROM_ADDRESS = "Proof of Launch <hello@send.proofoflaunch.com>";
+const FROM_ADDRESS = "Proof of Launch <hello@proofoflaunch.com>";
 const TO_ADDRESS = "info@proofoflaunch.com";
 const FALLBACK_CONTACT_LINE =
   "please contact us directly at info@proofoflaunch.com";
